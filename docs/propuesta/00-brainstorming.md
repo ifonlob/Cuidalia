@@ -12,6 +12,37 @@ Mi propuesta es desarrollar una plataforma orientada hacia empresas de ayuda a d
 
 ## Daniel Espinosa
 
+Aplicación web para autónomos y pymes.
+Esta aplicación iría destinada a ciudadanos y autónomos que no disponen de API de grandes destinatarios y tienen que hacer estos procesos manualmente.
+
+Una aplicación que se conecte a la plataforma DEHú de la administración pública y acepte y descargue las notificaciones pendientes, las almacene y las analize para separarlas por categorías, importancia y fechas límite en caso de tenerlas.
+
+Si hay notificaciones que tengan fecha límite para realizar algún trámite se creará un recordatorio que te enviará una notificación antes de esa fecha límite.
+
 ## Alejandro Espinosa
 
+Una app que crea playlists para correr  al  ritmo de la música, utilizando tus géneros musicales favoritos. 
+La app funciona:  
+Introduciendo tu velocidad de carrera y tu estilo de musica.
+La aplicación descarta las canciones muy lentas o frenéticas de ese género y junta solo las que encajan con tu ritmo de pasos.
+Te entrega una lista continua donde el ritmo coincida con tus pasos.  
+Para quien esta desarrollada:  
+Corredores hartos de las típicas listas genéricas de pop o electrónica de gimnasio.  
+Deportistas que usan la música como metrónomo para mantener una cadencia constante y evitar lesiones de rodilla.  
+Quienes quieren darle al play y tener motivación sin pausas, en lugar de perder tiempo filtrando canciones a mano o sacando el móvil para saltar pistas lentas.  
+
 ## Pablo Reyes
+
+Mi idea se basa en un buscador de videojuegos con el objetivo de crear, personalizar y cazar logros. Cuando entres en la página de tu juego se te plantean varias opciones delante de ti, podrás leer la descripción de tu videojuego y acceder a la sección de logros del mismo.
+
+La idea principal es que crees runs con los logros que busques, por ejemplo hay logros que al desbloquearlos te aportan beneficios en tu partida, trajes, municiones, armas etc, y eso es algo bastante atractivo para el usuario y a veces difícil de encontrar. Podrás llevar un registro de los logros de manera ordenada, ordenarlos a tu gusto ya sea prioridad, dificultad, recompensa.
+
+La clave de la aplicación será filtrar los logros según la experiencia deseada, y ahorrar tiempo a la hora de completar todos los logros, no dejar ninguno atrás por simple despiste u olvido.
+
+El problema que resuelve es la administración de tiempo y el estar constantemente pensando en pasar por alto algún logro, además de poder tener todos tus logros en un mismo lugar y registrados perfectamente.
+
+Para conseguir los datos de los tantísimos juegos que existen, tengo varias APIS localizadas gratuitas que ofrecen el servicio a cambio de mencionarlos en la app. Para los logros existe una propia API de logros de steam bastante buena y gratuita también.
+
+Los usuarios ideales son aquellos que buscan conseguir logros o descubrir aquellos que aporten una recompensa in-game.
+
+Frente a las demás aplicaciones de registro de videojuegos, rating, estilo letterbox de videojuegos, no hay ninguna enfocada al registro/obtención de logros, simplemente te muestran cuales son los logros, pero no cuáles se te pueden escapar al pasar una sala ni cuales te pueden venir mejor obtener según tus gustos.
