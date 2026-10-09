@@ -21,32 +21,124 @@
 
 ---
 
-## 2. Requisitos técnicos
+## 2. Análisis de requisitos técnicos
 
 ### 2.1 Frontend (React)
-#### Navegación
-#### Gestión del estado
-#### Componentes de interfaz
-#### Peticiones al backend
-#### Otras bibliotecas
+
+- **React DOM**: interactuar con el DOM de la aplicación.
+- **React Router**: navegar entre las distintas páginas de la aplicación y proteger las rutas según el rol del usuario.
+- **Tailwind CSS**: estilos de la aplicación, con diseño adaptable a móvil.
+- **Vite**: crear y compilar el proyecto.
+- **TanStack Query**: peticiones al backend, caché y refresco automático de los datos, como el estado de las visitas.
+- **Axios**: cliente HTTP que añade el token a cada petición y renueva la sesión cuando caduca.
+- **React Hook Form + Zod**: formularios y validación de datos, como el check-in, el checklist y los perfiles.
+- **date-fns**: manejo de fechas y horas del cuadrante y de las entradas y salidas.
+- **Lucide React**: iconos de la interfaz.
+- **vite-plugin-pwa**: instalar la aplicación en el móvil como una app y recibir notificaciones.
 
 ### 2.2 Backend (Node.js + Express)
-#### Autenticación
-#### Roles y permisos
-#### APIs y servicios externos
+
+#### Autenticación y roles
+
+Se necesita autenticación de cada usuario, ya que la aplicación maneja datos personales y de salud. Hay tres roles diferentes (coordinador, cuidador y familiar) con permisos distintos dentro de la aplicación. Un middleware comprueba el rol en cada ruta, de forma que cada persona solo accede a lo que le corresponde.
+
+Para la autenticación se utilizará JWT con un access token corto y un refresh token en una cookie `httpOnly`. Esta combinación permite una sesión larga, importante para que el familiar no tenga que meter la contraseña cada vez. Las contraseñas se guardan cifradas con bcrypt. Para leer la cookie se usa `cookie-parser`, y para generar y verificar los tokens, `jsonwebtoken`.
+
+#### API externa
+
+Como API externa, únicamente vamos a utilizar OpenRouteService, con el objetivo de calcular cuánto tarda un trabajador entre domicilios, según el tipo de transporte que utilice, y de ordenar los candidatos a una sustitución por tiempo de viaje. La clave de la API se guarda en el servidor, nunca en el frontend.
+
+Si el servicio falla o se agota su límite gratuito, el sistema usará una estimación propia con la fórmula de Haversine, que calcula la distancia más corta sobre la superficie de una esfera (como la Tierra) entre dos puntos definidos por su latitud y longitud.
+
+| Servicio | Uso | Límite gratuito |
+|---|---|---|
+| OpenRouteService | Tiempos de viaje entre domicilios | Más de 7.000 peticiones al día (requiere API key gratuita) |
+
+#### Otras bibliotecas necesarias
+
+- **Express**: servidor y rutas de la API.
+- **Mongoose**: conexión con MongoDB y definición de los esquemas.
+- **dotenv**: variables de entorno, como la clave de ORS y los secretos de JWT.
+- **cors**: permitir las peticiones desde el dominio del frontend.
+- **helmet**: cabeceras HTTP de seguridad.
+- **express-rate-limit**: limitar las peticiones y proteger el login y la cuota de OpenRouteService.
+- **Zod**: validar los datos que llegan a la API.
+- **web-push**: enviar notificaciones push a los móviles sin depender de un servicio de pago.
+- **nodemon**: reiniciar el servidor al guardar cambios durante el desarrollo.
 
 ### 2.3 Base de datos (MongoDB)
-#### Colecciones principales
-#### Campos de cada colección
-#### Relaciones entre colecciones
-#### Diagrama del esquema
+
+Hemos pensado en usar cinco colecciones principales: `users`, `assistedPersons`, `visits`, `substitutionRequests` y `notifications`. Cada colección representa una entidad del problema, y las relaciones entre ellas se hacen con referencias por `_id`.
+
+
+#### Colecciones
+
+La colección **users** almacena a las tres clases de personas que usan la aplicación (coordinadores, cuidadores y familiares) en un único lugar, diferenciadas por el campo `rol`. Esto simplifica la autenticación, porque todos inician sesión contra la misma colección, y permite aplicar los permisos según el rol. Los datos propios de los cuidadores (experiencia, formación, si pueden usar grúa, si tienen alergia a mascotas y su medio de transporte) van embebidos en el subdocumento `perfilCuidador`, que solo existe para ese rol. En esta colección también se guardan el hash de la contraseña (nunca la contraseña en claro) y los tokens necesarios para enviar notificaciones push.
+
+La colección **assistedPersons** contiene la ficha de cada persona atendida: dirección, ubicación, grado de dependencia, movilidad, patologías, alergias, dieta, medicación y notas. La medicación va embebida como lista, porque siempre se consulta junto a la ficha. Esta colección se relaciona con `users` mediante `cuidadorTitularId` (un cuidador titular) y mediante `familiaresIds` (uno o varios familiares autorizados). Esta segunda referencia define qué datos puede ver cada familiar, de modo que solo accede a la información de su propio familiar.
+
+La colección **visits** es la central del sistema, porque cada documento representa un servicio concreto, con su persona atendida, su cuidador y su horario previsto. Su campo `estado` permite seguir el servicio (programada, en curso, completada o cancelada). Las horas reales de llegada y salida se guardan en `checkIn` y `checkOut`, junto a la ubicación. Las tareas realizadas se guardan dentro de la propia visita, ya que el cuidador las marca durante el servicio y la familia las consulta en conjunto. Esta colección sirve de base para el resumen diario de la familia, la monitorización del coordinador y el historial de visitas.
+
+La colección **substitutionRequests** gestiona las bajas y sustituciones. Cuando un cuidador no puede acudir, se crea una solicitud ligada a la visita afectada. En ella se guardan los candidatos a los que se avisó y quién la aceptó. Al cubrirse, la solicitud pasa a estado "cubierta" y se actualiza el `cuidadorId` de la visita. Así se conserva el historial de cambios, que además sirve más adelante para calcular a quién hay que pagar cada servicio.
+
+La colección **notifications** guarda los avisos que reciben las personas, como cambios de horario, sustituciones o alertas. Cada aviso tiene un destinatario, un tipo, un mensaje y un indicador de lectura, y puede ir ligado a una visita. Se guarda en base de datos para que cada usuario pueda consultar su historial aunque no tuviera la aplicación abierta cuando se envió.
+
+#### Esquema preliminar
+
+```text
+users
+  _id, nombre, email, passwordHash,
+  rol: "coordinador" | "cuidador" | "familiar",
+  telefono, foto, pushTokens[],
+  perfilCuidador: { experiencia, formacion[], puedeUsarGrua, alergiaMascotas,
+                    transporte: "coche" | "bicicleta" | "a_pie",
+                    ubicacion: { lat, lng } }          (solo cuidadores)
+
+assistedPersons
+  _id, nombre, direccion, ubicacion: { lat, lng },
+  dependencia, movilidad, patologias[], alergias[], dieta,
+  medicacion: [{ nombre, dosis, hora }],
+  mascotas, notas,
+  cuidadorTitularId -> users,
+  familiaresIds[] -> users
+
+visits
+  _id, personaId -> assistedPersons, cuidadorId -> users,
+  inicioPrevisto, finPrevisto,
+  estado: "programada" | "en_curso" | "completada" | "cancelada",
+  checkIn: { fecha, lat, lng }, checkOut: { fecha, lat, lng },
+  tareas: [{ descripcion, hecha, horaRealizada, observaciones }]
+
+substitutionRequests
+  _id, visitId -> visits, solicitadaPor -> users,
+  motivo, estado: "abierta" | "cubierta",
+  candidatosNotificados[] -> users, aceptadaPor -> users
+
+notifications
+  _id, destinatarioId -> users, tipo, mensaje,
+  visitId (opcional), leida, createdAt
+```
+
+#### Relaciones principales
+
+- Una persona atendida tiene un cuidador titular y varios familiares.
+- Una persona atendida tiene muchas visitas, y cada visita pertenece a un solo cuidador.
+- Una visita puede tener una solicitud de sustitución.
+- Cada usuario puede tener muchas notificaciones.
+
+#### Índices
+
+Se crearán índices en `visits` por `cuidadorId + inicioPrevisto` y por `personaId + inicioPrevisto`, ya que son las consultas más frecuentes (agenda del cuidador y resumen diario).
 
 ### 2.4 Infraestructura
-#### Despliegue del frontend
-#### Despliegue del backend
-#### Despliegue de la base de datos
-#### Servicios cloud y condiciones del plan gratuito
 
+**Frontend.** Se desplegará en Vercel, en su capa gratuita, que ofrece despliegue sencillo, CI/CD automático desde GitHub, analíticas de tráfico y mitigación de ataques DDoS.
+
+**Base de datos.** Se usará MongoDB Atlas, que ofrece 512 MB de almacenamiento en su plan gratuito. Es suficiente, ya que solo se almacena texto.
+
+**Backend.** Se desplegará en Render (Web Service gratuito), conectado al repositorio de GitHub. El plan gratuito incluye 750 horas al mes, y el servicio se duerme tras 15 minutos sin tráfico, por lo que la primera petición puede tardar cerca de un minuto. Para mitigarlo se hará un ping periódico a un endpoint `/health`. Render no ofrece disco persistente en el plan gratuito, así que no se guardarán archivos en el servidor.
+
+**Servicios cloud adicionales.** Para el MVP no se necesitan más servicios. Las notificaciones push se envían con `web-push`, sin servicio de pago.
 ---
 
 ## 3. Capacidades del equipo
