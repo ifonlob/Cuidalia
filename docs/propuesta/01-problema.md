@@ -118,12 +118,6 @@ Es el profesional que realiza múltiples visitas a diferentes domicilios a lo la
 ### Punto de control
 Se decide **continuar con la idea candidata**. El software actual en España está enfocado en la facturación y la burocracia, dejando tirada la coordinación diaria y la tranquilidad familiar. Existe un hueco claro para una solución ágil, accesible y construida con una arquitectura web moderna.
 
-### Propuesta de valor única
-A las **empresas de ayuda a domicilio** les pasa que **pierden horas al día cuadrando turnos a mano, tapando bajas de imprevisto por teléfono y atendiendo a familias con dudas sobre el servicio**.
-
-Hoy usan **ERPs tradicionales rígidos combinados con hojas de Excel y grupos de WhatsApp**, que fallan en **la falta de automatización, apps móviles que dan errores al fichar y nula información en tiempo real para las familias**.
-
-Nosotros les damos **una plataforma web integral que sugiere sustituciones por cercanía y compatibilidad, permite a los auxiliares fichar y reportar tareas en dos toques desde el móvil, y da a las familias visibilidad directa sobre el cuidado de su familiar sin saturar la centralita**.
 
 ## 4. Propuesta de Valor Única
 
