@@ -197,6 +197,23 @@ Se crearán índices en `visits` por `cuidadorId + inicioPrevisto` y por `person
 ---
 
 ## 4. Riesgos técnicos
+
 ### 4.1 Listado de riesgos
+A continuación, se identifican los principales riesgos que podrían afectar al desarrollo, rendimiento o adopción del sistema:
+
+1. **Problemas de conectividad:** Pérdida de conexión o falta de cobertura de red móvil durante el check-in/check-out y completado de tareas por parte de los cuidadores dentro de los domicilios.
+2. **Dependencia de terceros (APIs):** Retrasos o fallos en la integración con servicios de geolocalización o mapas (como OpenRouteService).
+3. **Cuellos de botella en el servidor:** Sobrecarga del backend (Node.js) ante picos de avisos masivos, como el envío simultáneo de notificaciones por bajas y sustituciones.
+4. **Adopción por parte del usuario:** Resistencia al uso de la aplicación por parte de cuidadores con menor destreza o brecha digital.
+5. **Desviación de plazos (Scope creep):** Retrasos en el desarrollo provocados por cambios o ampliación de alcance en los requisitos por parte del equipo de coordinación.
 
 ### 4.2 Estrategias de mitigación
+Para cada riesgo identificado, se aplicarán las siguientes medidas preventivas antes de que ocurran:
+
+| Riesgo | Estrategia de Mitigación |
+| :--- | :--- |
+| **Problemas de conectividad** | Implementar almacenamiento local en el frontend (mediante capacidades PWA/Service Workers) para que los fichajes y checklists se guarden temporalmente en el dispositivo y se sincronicen automáticamente con la base de datos al recuperar la cobertura. |
+| **Dependencia de APIs de mapas** | Seleccionar APIs estables con SDKs probados y desarrollar una capa de abstracción temprana en el código. Esto nos permitirá cambiar rápidamente a un proveedor alternativo (o usar la fórmula de Haversine nativa) si surgen limitaciones, caídas o costes inesperados. |
+| **Sobrecarga del backend** | Utilizar un sistema de colas de mensajes (como Redis o similar) para encolar y procesar las notificaciones push masivas de forma asíncrona. Esto evitará bloqueos en el hilo principal del servidor y asegurará la disponibilidad del sistema. |
+| **Resistencia al uso (brecha digital)** | Diseñar una interfaz orientada a móviles extremadamente simplificada, con textos grandes y botones claros. Se complementará realizando sesiones de formación práctica con los cuidadores previas al despliegue oficial. |
+| **Desviaciones en los plazos** | Establecer un MVP con alcance cerrado y estricto. Se aplicarán metodologías ágiles con iteraciones cortas para validar tempranamente cada funcionalidad con los coordinadores antes de avanzar, bloqueando la entrada de nuevas peticiones funcionales hasta la siguiente fase. |
