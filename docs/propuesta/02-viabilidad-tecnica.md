@@ -280,7 +280,7 @@ Si el servicio falla o se agota su límite gratuito, el sistema usará una estim
 
 | Servicio | Uso | Límite gratuito |
 |---|---|---|
-| OpenRouteService | Tiempos de viaje entre domicilios | Más de 7.000 peticiones al día (requiere API key gratuita) |
+| OpenRouteService | Tiempos de viaje entre domicilios | Más de 500 peticiones al día y 40 por minuto (requiere API key gratuita) |
 
 #### Otras bibliotecas necesarias
 
