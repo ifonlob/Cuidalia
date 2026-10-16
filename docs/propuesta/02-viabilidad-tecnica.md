@@ -294,15 +294,15 @@ Si el servicio falla o se agota su límite gratuito, el sistema usará una estim
 
 #### Otras bibliotecas necesarias
 
-- **Express**: servidor y rutas de la API.
-- **Mongoose**: conexión con MongoDB y definición de los esquemas.
-- **dotenv**: variables de entorno, como la clave de ORS y los secretos de JWT.
-- **cors**: permitir las peticiones desde el dominio del frontend.
-- **helmet**: cabeceras HTTP de seguridad.
+- **Express**: recibirá las solicitudes entrantes, ejecutará middlewares(puentes) y devolverá respuestas con una estructura.
+- **Mongoose**: funcionará como ODM para modelar y tipar documentos de la BD NoSQL, se asegurara de cumplir validaciones antes de guardar datos.
+- **dotenv**: cargara con seguridad credenciales sensibles, rutas y puertos asegurandose así de mantener una seguridad y evitar filtraciones a publico no deseado.
+- **cors**: permitirá peticiones HTTP a la API sin bloqueos por seguridad y rechazara las que no estén autorizadas, controla la política de Intercambio de Recursos de Origen Cruzado.
+- **helmet**: aplica de manera automática  encabezados de seguridad para mitigar vulnerabilidades web tìpicas.
 - **express-rate-limit**: limitar las peticiones y proteger el login y la cuota de OpenRouteService.
-- **Zod**: validar los datos que llegan a la API.
-- **web-push**: enviar notificaciones push a los móviles sin depender de un servicio de pago.
-- **nodemon**: reiniciar el servidor al guardar cambios durante el desarrollo.
+- **Zod**: comprueba en el backend que los cuerpos de las peticiones, parámetros y consultas cumplen con los estándares antes de que sean procesados devolviendo errores muy descriptivos.
+- **web-push**: implementa estándares Web Push a partir de protocolos VAPID que derivan alertas al Service Worker, manteniendo operativas las alertas incluso cuando la app esta cerrada en primer plano.
+- **nodemon**: mejora la productividad en local al monitorizar los archivos backend y reiniciar procesos.
 
 ### 2.3 Base de datos (MongoDB)
 
