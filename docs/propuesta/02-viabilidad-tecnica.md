@@ -249,14 +249,13 @@ Límites claros del proyecto. Lo que el sistema NO va a hacer en esta versión.
 
 ## 7. Resumen del alcance del MVP
 
-El MVP se centra en tres recorridos esenciales:
+Para garantizar que el proyecto se entregue a tiempo y sea completamente funcional, el Producto Mínimo Viable (MVP) descarta funcionalidades secundarias y se centra exclusivamente en garantizar con éxito tres recorridos esenciales:
 
-1. **Coordinación:** gestionar una baja y asignar una sustitución.
-2. **Familiar:** consultar el resumen diario tras finalizar el servicio.
-3. **Cuidador/a:** fichar la entrada, completar las tareas y guardar el servicio.
+1. **Coordinador:** Gestionar una baja imprevista, buscar un trabajador disponible y asignar la sustitución de forma rápida y directa desde la aplicación.
+2. **Cuidador/a:** Llegar al domicilio, registrar su entrada (incluso con problemas de cobertura), marcar las tareas específicas completadas y cerrar el servicio.
+3. **Familiar:** Entrar a la app tras finalizar el turno para consultar el resumen diario y tener la tranquilidad de que todo ha ido bien.
 
-Estos recorridos permiten validar el funcionamiento básico de la gestión de servicios, la comunicación entre perfiles y el seguimiento de las visitas.
-
+Centrarnos estrictamente en estos tres recorridos nos permite validar el núcleo real de la aplicación (gestión de servicios, registro de tareas y tranquilidad para las familias) asegurando al 100% la viabilidad técnica del proyecto.
 
 ---
 
@@ -398,16 +397,15 @@ Después de revisar lo que sabe cada miembro del equipo y lo que necesita el pro
 ---
 
 #### Valoración
-- ¿Las horas estimadas caben en las horas disponibles?: Sí. El alcance planteado para el MVP es totalmente asumible dentro del tiempo previsto. La carga de trabajo se distribuye de manera equilibrada y no supera la disponibilidad global, permitiendo absorber los tiempos de aprendizaje.
+- **¿Las horas estimadas caben en las horas disponibles?:** Inicialmente no. Nuestro primer análisis de conocimientos detectó un desfase importante (necesitábamos más de 50 horas de aprendizaje para un límite de unas 40 horas). Sin embargo, tras aplicar límites de tiempo estrictos y repartirnos los temas en lugar de que todos aprendamos todo, hemos logrado ajustar la formación a 36 horas. Con esta estrategia realista, el alcance del MVP sí es asumible y nos deja un pequeño margen de seguridad.
 
-#### Recortes del MVP
-- No es necesario aplicar ningún recorte. La planificación temporal y la capacidad del equipo permiten abordar la totalidad de las funcionalidades definidas para el MVP.
-- Se desarrolla el 100% del alcance comprometido:
-  - Gestión integral de cuadrantes y perfiles de usuarios asistidos (CU-C1, CU-C3).
-  - Circuito de sustituciones y sistema de notificaciones (CU-C4, CU-C5, CU-T2).
-  - Interfaz de trabajo del cuidador con agenda, check-in/out y checklist (CU-T1, CU-T3, CU-T5, CU-T6).
-  - Panel de monitorización en tiempo real para coordinación (CU-C6).
-  - Módulo de resumen diario y seguimiento para familiares (CU-F1).
+#### Recortes y ajustes del MVP
+- Para asegurar que el proyecto se entrega a tiempo y funciona, sí ha sido necesario aplicar recortes técnicos y metodológicos, priorizando el flujo principal sobre los detalles complejos:
+  - **Simplificación de PWA y notificaciones:** Se ha reducido a lo mínimo funcional (instalación básica). Si consume más de las 4 horas asignadas, las notificaciones push se sustituirán por avisos más sencillos en la propia app.
+  - **Límite en mapas y distancias:** La integración de mapas (OpenRouteService) tiene un límite de prueba de 2 horas. Si falla o es muy compleja, se descarta y se utilizará una fórmula matemática básica para estimar la cercanía.
+  - **Base de datos básica:** Se han eliminado del alcance inicial las consultas complejas y estadísticas avanzadas; nos limitaremos a leer, crear, modificar y borrar datos.
+  - **Plantillas de código:** En lugar de que todo el equipo aprenda React y Node desde cero, nos basaremos en copiar y adaptar la estructura inicial que monte el compañero con más experiencia. 
+- Gracias a estos recortes en la complejidad técnica, se asegura el desarrollo del 100% de los flujos críticos (gestión de la baja, fichaje del cuidador en el domicilio y visualización del resumen para el familiar).
     
 ---
 
