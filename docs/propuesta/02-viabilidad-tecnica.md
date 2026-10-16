@@ -380,44 +380,21 @@ Se crearán índices en `visits` por `cuidadorId + inicioPrevisto` y por `person
 **Servicios cloud adicionales.** Para el MVP no se necesitan más servicios. Las notificaciones push se envían con `web-push`, sin servicio de pago.
 ---
 
-## 3. Capacidades del equipo
-
-### 3.1 Inventario de habilidades
-
-| Tecnología | Irene | Dani | Alejandro | Pablo |
-|---|:---:|:---:|:---:|:---:|
-| HTML y CSS | 4 | 3 | 3 | 3 |
-| JavaScript (ES6+, async/await) | 3 | 3 | 2 | 2 |
-| React (componentes, hooks, props) | 0 | 2 | 0 | 0 |
-| React Router | 0 | 2 | 0 | 0 |
-| Tailwind CSS | 3 | 2 | 2 | 2 |
-| Vite | 0 | 3 | 0 | 0 |
-| TanStack Query | 0 | 0 | 0 | 0 |
-| Axios | 0 | 0 | 0 | 0 |
-| React Hook Form + Zod | 0 | 0 | 0 | 0 |
-| PWA (vite-plugin-pwa) y notificaciones push | 0 | 0 | 0 | 0 |
-| Node.js | 1 | 0 | 0 | 0 |
-| Express (rutas, middlewares) | 0 | 0 | 0 | 0 |
-| Autenticación con JWT (access y refresh token) | 0 | 0 | 0 | 0 |
-| bcrypt y seguridad básica (helmet, CORS) | 0 | 0 | 0 | 0 |
-| Control de acceso por roles | 2 | 1 | 0 | 0 |
-| MongoDB y Mongoose | 1 | 1 | 1 | 1 |
-| Diseño de esquemas e índices | 4 | 2 | 2 | 3 |
-| Consumo de APIs externas (OpenRouteService) | 3 | 3 | 3 | 3 |
-| Git y GitHub (ramas, PR, review) | 5 | 3 | 3 | 3 |
-| Despliegue (Vercel, Render, Atlas) | 1 | 2 | 1 | 1 |
-| Testing (opcional) | 3 | 4 | 0 | 0 |
-
----
-
 ### 3.2 Lagunas de conocimiento
 
-| Tecnología o tema | Quién la desconoce | Qué hay que aprender | Cómo y cuándo se aprende | Tiempo estimado |
+Después de revisar lo que sabe cada miembro del equipo y lo que necesita el proyecto inicial (MVP), hemos detectado qué cosas nos faltan por aprender. Para asegurarnos de que llegamos a tiempo, hemos decidido que no todos vamos a aprender de todo al mismo nivel (nos repartiremos el trabajo) y pondremos un límite máximo de horas para investigar los temas menos urgentes.
+
+| Tecnología o tema | Quién lo desconoce | Qué hay que aprender exactamente | Cómo y cuándo se va a aprender | Tiempo estimado |
 |---|---|---|---|:---:|
-| PWA y notificaciones push | Irene, Pablo, Alejandro | Service Workers y suscripción push | Documentación oficial y spike técnico en sprint 2 | 8 h |
-| React Hook Form + Zod | Irene, Pablo, Alejandro, Dani | Validación de esquemas en formularios | Mini-módulo de autenticación en semana 1 | 5 h |
-| Control de roles con JWT | Irene, Pablo, Alejandro, Dani | Middleware de autorización en Express | Integración de endpoints protegidos en sprint 1 | 6 h |
-| OpenRouteService | Irene, Pablo, Alejandro, Dani | Consumo de API REST y cálculo de rutas | Pruebas de integración previas al cuadrante | 4 h |
+| **App instalable y notificaciones (PWA)** | Irene, Dani, Alejandro, Pablo | Cómo instalar la web como si fuera una app en el móvil y cómo enviar avisos (notificaciones). | Prueba rápida con tiempo máximo estricto en el segundo sprint. | 4 h |
+| **Formularios seguros (React Hook Form + Zod)** | Irene, Dani, Alejandro, Pablo | Cómo asegurar que los datos que escriben los usuarios no tienen errores (al fichar o crear perfiles). | Creando una pequeña pantalla de prueba la primera semana. | 5 h |
+| **Control de usuarios y permisos (JWT)** | Irene, Dani, Alejandro, Pablo | Cómo controlar quién entra a la app y asegurar que un familiar no vea los datos de otro paciente. | Mientras creamos el sistema de inicio de sesión en el primer sprint. | 6 h |
+| **Cálculo de distancias (OpenRouteService)** | Equipo al completo | Cómo conectar la app con un mapa para calcular cuánto tarda un cuidador en llegar a una casa. | Límite de 2 horas de prueba en el segundo sprint (si falla, usaremos una fórmula matemática más sencilla). | 2 h |
+| **Creación de pantallas (React y herramientas)** | Irene, Alejandro, Pablo | Cómo construir las vistas de la aplicación y conectarlas con los datos de forma fluida. | Copiando la estructura base que hará el compañero con más experiencia (Dani) la primera semana. | 8 h |
+| **Cerebro de la aplicación (Node y Express)** | Irene, Dani, Alejandro, Pablo | Cómo recibir las peticiones de los usuarios (como pedir ver un perfil) y responder de forma segura. | Programando en parejas al montar la base del proyecto en el primer sprint. | 6 h |
+| **Base de datos (MongoDB)** | Irene, Dani, Alejandro, Pablo | Cómo guardar, buscar, actualizar y borrar la información básica sin complicarnos. | En una reunión conjunta para diseñar cómo guardar los datos la primera semana. | 5 h |
+
+**Total de horas destinadas a aprendizaje/investigación:** 36 horas. 
 
 ---
 
