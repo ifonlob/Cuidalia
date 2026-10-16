@@ -252,16 +252,15 @@ Estos recorridos permiten validar el funcionamiento básico de la gestión de se
 
 ### 2.1 Frontend (React)
 
-- **React DOM**: interactuar con el DOM de la aplicación.
-- **React Router**: navegar entre las distintas páginas de la aplicación y proteger las rutas según el rol del usuario.
-- **Tailwind CSS**: estilos de la aplicación, con diseño adaptable a móvil.
-- **Vite**: crear y compilar el proyecto.
-- **TanStack Query**: peticiones al backend, caché y refresco automático de los datos, como el estado de las visitas.
-- **Axios**: cliente HTTP que añade el token a cada petición y renueva la sesión cuando caduca.
-- **React Hook Form + Zod**: formularios y validación de datos, como el check-in, el checklist y los perfiles.
-- **date-fns**: manejo de fechas y horas del cuadrante y de las entradas y salidas.
-- **Lucide React**: iconos de la interfaz.
-- **vite-plugin-pwa**: instalar la aplicación en el móvil como una app y recibir notificaciones.
+- **React Router**: permitirá ir cambiando entre apartados sin necesidad de recargar la página en el navegador; además gestiona las rutas protegidas dependiendo del rol que tenga el usuario.
+- **Tailwind CSS**: facilitará la creación de interfaces capaces de responder al usuario y mantener un sistema de diseño moderno y constante.
+- **Vite**: aportará un servidor de desarrollo capaz de recargar muy rápido los módulos, compilar, optimizar y reducir el tamaño de los archivos; en definitiva, reducirá los tiempos de manera significativa.
+- **TanStack Query**: llevará a cabo las peticiones, almacenaje en cache de datos que llegan de la base de datos, gestionará cargas y validará datos en segundo plano evitando sobrecargar la API de llamadas.
+- **Axios**: ejecutará peticiones HTTP, configurará interceptores que inyectarán tokens, transformará respuestas y capturará errores tipo de 401, 403.
+- **React Hook Form + Zod**: gestionará campos evitando renderizados innecesarios en la interfaz, por su parte, Zod definirá esquemas de validación. Juntos se encargarán de que no se envién datos erróneos al servidor y de mostrar los errores de forma clara para una comprensión de calidad.
+- **date-fns**: gestionará datos como el horario y los registros además de formatearlos.
+- **Lucide React**: proporcionará iconos y calidad visual a la interfaz, mejorando la accesibilidad.
+- **vite-plugin-pwa**: configurará el manifiesto web y los Service Workers para que los usuarios puedan instalar la app en sus dispositivos simulando una aplicación nativa además de habilitar la carga de recursos sin conexión a internet.
 
 ### 2.2 Backend (Node.js + Express)
 
