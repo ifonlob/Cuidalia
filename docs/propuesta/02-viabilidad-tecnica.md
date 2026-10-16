@@ -166,29 +166,40 @@ El cuidador es informado de cambios en medicación, movilidad o citas, con confi
 
 ## 4. Priorización de funcionalidades
 
-### 4.1. Must have
+### Must have (Debe tener)
+Funciones críticas y obligatorias. Sin ellas, los recorridos mínimos del MVP (gestión de la baja, fichaje y resumen del familiar) no se pueden completar.
 
-Funcionalidades imprescindibles para la primera versión del producto:
+- **Autenticación y persistencia de sesión:** El sistema permite el acceso seguro mediante credenciales (JWT), dirigiendo a cada usuario (Coordinador, Cuidador, Familiar) a su interfaz correspondiente y manteniendo la sesión abierta para evitar logins constantes.
+- **Cuadrante y filtrado de turnos:** El coordinador puede visualizar los turnos, buscar por trabajador y filtrar aquellos afectados por una baja para identificar rápidamente qué servicios necesitan un sustituto.
+- **Gestión de sustituciones in-app:** El coordinador puede seleccionar un turno sin cubrir, elegir a un trabajador disponible y asignarle el servicio, permitiendo que el trabajador lo reciba y acepte directamente desde su aplicación móvil.
+- **Fichaje geolocalizado con tolerancia offline:** El cuidador puede registrar su entrada (check-in) y salida (check-out) en el domicilio. El sistema valida la cobertura y, si falla, guarda el registro localmente para sincronizarlo cuando recupere la conexión.
+- **Checklist de tareas interactivas:** El cuidador visualiza un listado de tareas específicas del usuario asignado (medicación, aseo) y las marca como completadas durante el servicio, validando automáticamente la información al terminar.
+- **Resumen diario automatizado:** El sistema genera un reporte a partir del checklist del cuidador y envía una notificación push al familiar indicando que el servicio ha finalizado. El familiar entra a la app y visualiza este resumen para comprobar que todo ha ido bien.
 
-- **Autenticación y roles:** sin permisos diferenciados, la familia vería datos que no debe.
-- **Cuadrante:** crear y editar servicios manualmente.
-- **Perfil del usuario:** dependencia, medicación, horario contratado y contactos de la familia.
-- **Bajas y sustituciones:** aviso a los candidatos y aceptación desde la app.
-- **Notificaciones de cambios:** a familia y cuidadores.
-- **Monitorización de visitas:** quién ha llegado, quién se retrasa y quién no ha aparecido.
-- **Perfil del cuidador.**
-- **Perfil del usuario visible para el cuidador.**
-- **Check-in y check-out.**
-- **Checklist de tareas realizadas.**
+### Should have (Debería tener)
+Funciones que mejoran enormemente la experiencia, pero cuyo desarrollo podría aplazarse si hay riesgos de tiempo, ya que el happy path del MVP puede funcionar sin ellas.
 
-### 4.2. Should have
+- **Gestión y reporte de incidencias:** El cuidador puede registrar desde su app cualquier anomalía ocurrida durante el turno (negativas a medicación, falta de material) y el coordinador puede visualizarla, priorizarla y hacerle seguimiento.
+- **Monitorización de visitas en tiempo real:** El coordinador dispone de un panel de alertas donde ve de forma automática quién ha hecho check-in, quién se retrasa o quién no ha aparecido, sin tener que revisar el cuadrante celda por celda.
+- **Filtros avanzados por perfil y distancia:** Al buscar un sustituto, el coordinador puede filtrar a los cuidadores según las necesidades del paciente (uso de grúa, alergias) y ordenarlos por tiempo de desplazamiento utilizando la API de OpenRouteService (o la fórmula de Haversine).
+- **Alertas inmediatas de gravedad:** El sistema puede enviar notificaciones push destacadas al familiar y al coordinador en caso de que el cuidador reporte un evento grave, como una caída o un mareo.
+- **Notificaciones preventivas de cambios:** Envío de avisos automáticos a las familias cuando se cambia al trabajador titular por un sustituto, mostrando el perfil básico del nuevo cuidador.
 
-Funcionalidades importantes que pueden incorporarse después de las imprescindibles:
+### Could have (Podría tener)
+Funcionalidades deseables, pero que están claramente fuera del alcance del MVP inicial y se abordarán en futuras iteraciones.
 
-- **Incidencias:** el coordinador las gestiona y el cuidador las reporta.
-- **Historial de tareas consultable.**
-- **Alertas inmediatas de eventos graves.**
-- **Solicitudes de la familia:** por ejemplo, adelantar una visita.
+- **Mensajería interna (Chat centralizado):** Familiares, coordinadores y cuidadores pueden comunicarse mediante un chat integrado en la plataforma, eliminando el uso de WhatsApp y centralizando la información.
+- **Solicitudes directas de la familia:** El familiar puede pedir adelantar una visita, cambiar un horario o añadir una tarea puntual (ej. aplicar una crema) a través de un formulario en la app, y ver el estado de aprobación de su solicitud.
+- **Botón de emergencia (SOS):** Un acceso rápido en la app del cuidador que avisa simultáneamente a la familia y a coordinación ante una urgencia, mostrando los teléfonos médicos pertinentes.
+- **Generador de informes para nóminas:** El sistema calcula de manera automatizada las horas mensuales trabajadas y las sustituciones realizadas por cada empleado para exportarlas a gestión laboral.
+
+### Won't have (No tendrá)
+Límites claros del proyecto. Lo que el sistema NO va a hacer en esta versión.
+
+- **Generación automática o inteligente de cuadrantes:** El sistema no utilizará Inteligencia Artificial ni algoritmos complejos para crear los horarios mensuales desde cero, ya que la creación y edición inicial de los servicios seguirá siendo manual por parte del coordinador.
+- **Pasarela de pagos y facturación:** La aplicación no gestionará cobros a las familias mediante tarjeta de crédito ni calculará importes económicos de facturas; se limitará a la gestión de tiempos y tareas.
+- **Integración con sistemas de salud públicos:** La aplicación operará de forma aislada y no se conectará con el historial clínico electrónico de la comunidad autónoma ni con bases de datos de hospitales.
+- **Videollamadas integradas:** Toda la comunicación dentro de la app se realizará mediante texto (resúmenes, notificaciones o chat en un futuro), descartando funcionalidades de streaming de vídeo entre familias y cuidadores.
 
 ---
 
@@ -238,14 +249,13 @@ Funcionalidades importantes que pueden incorporarse después de las imprescindib
 
 ## 7. Resumen del alcance del MVP
 
-El MVP se centra en tres recorridos esenciales:
+Para garantizar que el proyecto se entregue a tiempo y sea completamente funcional, el Producto Mínimo Viable (MVP) descarta funcionalidades secundarias y se centra exclusivamente en garantizar con éxito tres recorridos esenciales:
 
-1. **Coordinación:** gestionar una baja y asignar una sustitución.
-2. **Familiar:** consultar el resumen diario tras finalizar el servicio.
-3. **Cuidador/a:** fichar la entrada, completar las tareas y guardar el servicio.
+1. **Coordinador:** Gestionar una baja imprevista, buscar un trabajador disponible y asignar la sustitución de forma rápida y directa desde la aplicación.
+2. **Cuidador/a:** Llegar al domicilio, registrar su entrada (incluso con problemas de cobertura), marcar las tareas específicas completadas y cerrar el servicio.
+3. **Familiar:** Entrar a la app tras finalizar el turno para consultar el resumen diario y tener la tranquilidad de que todo ha ido bien.
 
-Estos recorridos permiten validar el funcionamiento básico de la gestión de servicios, la comunicación entre perfiles y el seguimiento de las visitas.
-
+Centrarnos estrictamente en estos tres recorridos nos permite validar el núcleo real de la aplicación (gestión de servicios, registro de tareas y tranquilidad para las familias) asegurando al 100% la viabilidad técnica del proyecto.
 
 ---
 
@@ -253,16 +263,15 @@ Estos recorridos permiten validar el funcionamiento básico de la gestión de se
 
 ### 2.1 Frontend (React)
 
-- **React DOM**: interactuar con el DOM de la aplicación.
-- **React Router**: navegar entre las distintas páginas de la aplicación y proteger las rutas según el rol del usuario.
-- **Tailwind CSS**: estilos de la aplicación, con diseño adaptable a móvil.
-- **Vite**: crear y compilar el proyecto.
-- **TanStack Query**: peticiones al backend, caché y refresco automático de los datos, como el estado de las visitas.
-- **Axios**: cliente HTTP que añade el token a cada petición y renueva la sesión cuando caduca.
-- **React Hook Form + Zod**: formularios y validación de datos, como el check-in, el checklist y los perfiles.
-- **date-fns**: manejo de fechas y horas del cuadrante y de las entradas y salidas.
-- **Lucide React**: iconos de la interfaz.
-- **vite-plugin-pwa**: instalar la aplicación en el móvil como una app y recibir notificaciones.
+- **React Router**: permitirá ir cambiando entre apartados sin necesidad de recargar la página en el navegador; además gestiona las rutas protegidas dependiendo del rol que tenga el usuario.
+- **Tailwind CSS**: facilitará la creación de interfaces capaces de responder al usuario y mantener un sistema de diseño moderno y constante.
+- **Vite**: aportará un servidor de desarrollo capaz de recargar muy rápido los módulos, compilar, optimizar y reducir el tamaño de los archivos; en definitiva, reducirá los tiempos de manera significativa.
+- **TanStack Query**: llevará a cabo las peticiones, almacenaje en cache de datos que llegan de la base de datos, gestionará cargas y validará datos en segundo plano evitando sobrecargar la API de llamadas.
+- **Axios**: ejecutará peticiones HTTP, configurará interceptores que inyectarán tokens, transformará respuestas y capturará errores tipo de 401, 403.
+- **React Hook Form + Zod**: gestionará campos evitando renderizados innecesarios en la interfaz, por su parte, Zod definirá esquemas de validación. Juntos se encargarán de que no se envién datos erróneos al servidor y de mostrar los errores de forma clara para una comprensión de calidad.
+- **date-fns**: gestionará datos como el horario y los registros además de formatearlos.
+- **Lucide React**: proporcionará iconos y calidad visual a la interfaz, mejorando la accesibilidad.
+- **vite-plugin-pwa**: configurará el manifiesto web y los Service Workers para que los usuarios puedan instalar la app en sus dispositivos simulando una aplicación nativa además de habilitar la carga de recursos sin conexión a internet.
 
 ### 2.2 Backend (Node.js + Express)
 
@@ -284,15 +293,15 @@ Si el servicio falla o se agota su límite gratuito, el sistema usará una estim
 
 #### Otras bibliotecas necesarias
 
-- **Express**: servidor y rutas de la API.
-- **Mongoose**: conexión con MongoDB y definición de los esquemas.
-- **dotenv**: variables de entorno, como la clave de ORS y los secretos de JWT.
-- **cors**: permitir las peticiones desde el dominio del frontend.
-- **helmet**: cabeceras HTTP de seguridad.
+- **Express**: recibirá las solicitudes entrantes, ejecutará middlewares(puentes) y devolverá respuestas con una estructura.
+- **Mongoose**: funcionará como ODM para modelar y tipar documentos de la BD NoSQL, se asegurara de cumplir validaciones antes de guardar datos.
+- **dotenv**: cargara con seguridad credenciales sensibles, rutas y puertos asegurandose así de mantener una seguridad y evitar filtraciones a publico no deseado.
+- **cors**: permitirá peticiones HTTP a la API sin bloqueos por seguridad y rechazara las que no estén autorizadas, controla la política de Intercambio de Recursos de Origen Cruzado.
+- **helmet**: aplica de manera automática  encabezados de seguridad para mitigar vulnerabilidades web tìpicas.
 - **express-rate-limit**: limitar las peticiones y proteger el login y la cuota de OpenRouteService.
-- **Zod**: validar los datos que llegan a la API.
-- **web-push**: enviar notificaciones push a los móviles sin depender de un servicio de pago.
-- **nodemon**: reiniciar el servidor al guardar cambios durante el desarrollo.
+- **Zod**: comprueba en el backend que los cuerpos de las peticiones, parámetros y consultas cumplen con los estándares antes de que sean procesados devolviendo errores muy descriptivos.
+- **web-push**: implementa estándares Web Push a partir de protocolos VAPID que derivan alertas al Service Worker, manteniendo operativas las alertas incluso cuando la app esta cerrada en primer plano.
+- **nodemon**: mejora la productividad en local al monitorizar los archivos backend y reiniciar procesos.
 
 ### 2.3 Base de datos (MongoDB)
 
@@ -369,58 +378,34 @@ Se crearán índices en `visits` por `cuidadorId + inicioPrevisto` y por `person
 **Servicios cloud adicionales.** Para el MVP no se necesitan más servicios. Las notificaciones push se envían con `web-push`, sin servicio de pago.
 ---
 
-## 3. Capacidades del equipo
-
-### 3.1 Inventario de habilidades
-
-| Tecnología | Irene | Dani | Alejandro | Pablo |
-|---|:---:|:---:|:---:|:---:|
-| HTML y CSS | 4 | 3 | 3 | 3 |
-| JavaScript (ES6+, async/await) | 3 | 3 | 2 | 2 |
-| React (componentes, hooks, props) | 0 | 2 | 0 | 0 |
-| React Router | 0 | 2 | 0 | 0 |
-| Tailwind CSS | 3 | 2 | 2 | 2 |
-| Vite | 0 | 3 | 0 | 0 |
-| TanStack Query | 0 | 0 | 0 | 0 |
-| Axios | 0 | 0 | 0 | 0 |
-| React Hook Form + Zod | 0 | 0 | 0 | 0 |
-| PWA (vite-plugin-pwa) y notificaciones push | 0 | 0 | 0 | 0 |
-| Node.js | 1 | 0 | 0 | 0 |
-| Express (rutas, middlewares) | 0 | 0 | 0 | 0 |
-| Autenticación con JWT (access y refresh token) | 0 | 0 | 0 | 0 |
-| bcrypt y seguridad básica (helmet, CORS) | 0 | 0 | 0 | 0 |
-| Control de acceso por roles | 2 | 1 | 0 | 0 |
-| MongoDB y Mongoose | 1 | 1 | 1 | 1 |
-| Diseño de esquemas e índices | 4 | 2 | 2 | 3 |
-| Consumo de APIs externas (OpenRouteService) | 3 | 3 | 3 | 3 |
-| Git y GitHub (ramas, PR, review) | 5 | 3 | 3 | 3 |
-| Despliegue (Vercel, Render, Atlas) | 1 | 2 | 1 | 1 |
-| Testing (opcional) | 3 | 4 | 0 | 0 |
-
----
-
 ### 3.2 Lagunas de conocimiento
 
-| Tecnología o tema | Quién la desconoce | Qué hay que aprender | Cómo y cuándo se aprende | Tiempo estimado |
+Después de revisar lo que sabe cada miembro del equipo y lo que necesita el proyecto inicial (MVP), hemos detectado qué cosas nos faltan por aprender. Para asegurarnos de que llegamos a tiempo, hemos decidido que no todos vamos a aprender de todo al mismo nivel (nos repartiremos el trabajo) y pondremos un límite máximo de horas para investigar los temas menos urgentes.
+
+| Tecnología o tema | Quién lo desconoce | Qué hay que aprender exactamente | Cómo y cuándo se va a aprender | Tiempo estimado |
 |---|---|---|---|:---:|
-| PWA y notificaciones push | Irene, Pablo, Alejandro | Service Workers y suscripción push | Documentación oficial y spike técnico en sprint 2 | 8 h |
-| React Hook Form + Zod | Irene, Pablo, Alejandro, Dani | Validación de esquemas en formularios | Mini-módulo de autenticación en semana 1 | 5 h |
-| Control de roles con JWT | Irene, Pablo, Alejandro, Dani | Middleware de autorización en Express | Integración de endpoints protegidos en sprint 1 | 6 h |
-| OpenRouteService | Irene, Pablo, Alejandro, Dani | Consumo de API REST y cálculo de rutas | Pruebas de integración previas al cuadrante | 4 h |
+| **App instalable y notificaciones (PWA)** | Irene, Dani, Alejandro, Pablo | Cómo instalar la web como si fuera una app en el móvil y cómo enviar avisos (notificaciones). | Prueba rápida con tiempo máximo estricto en el segundo sprint. | 4 h |
+| **Formularios seguros (React Hook Form + Zod)** | Irene, Dani, Alejandro, Pablo | Cómo asegurar que los datos que escriben los usuarios no tienen errores (al fichar o crear perfiles). | Creando una pequeña pantalla de prueba la primera semana. | 5 h |
+| **Control de usuarios y permisos (JWT)** | Irene, Dani, Alejandro, Pablo | Cómo controlar quién entra a la app y asegurar que un familiar no vea los datos de otro paciente. | Mientras creamos el sistema de inicio de sesión en el primer sprint. | 6 h |
+| **Cálculo de distancias (OpenRouteService)** | Equipo al completo | Cómo conectar la app con un mapa para calcular cuánto tarda un cuidador en llegar a una casa. | Límite de 2 horas de prueba en el segundo sprint (si falla, usaremos una fórmula matemática más sencilla). | 2 h |
+| **Creación de pantallas (React y herramientas)** | Irene, Alejandro, Pablo | Cómo construir las vistas de la aplicación y conectarlas con los datos de forma fluida. | Copiando la estructura base que hará el compañero con más experiencia (Dani) la primera semana. | 8 h |
+| **Cerebro de la aplicación (Node y Express)** | Irene, Dani, Alejandro, Pablo | Cómo recibir las peticiones de los usuarios (como pedir ver un perfil) y responder de forma segura. | Programando en parejas al montar la base del proyecto en el primer sprint. | 6 h |
+| **Base de datos (MongoDB)** | Irene, Dani, Alejandro, Pablo | Cómo guardar, buscar, actualizar y borrar la información básica sin complicarnos. | En una reunión conjunta para diseñar cómo guardar los datos la primera semana. | 5 h |
+
+**Total de horas destinadas a aprendizaje/investigación:** 36 horas. 
 
 ---
 
 #### Valoración
-- ¿Las horas estimadas caben en las horas disponibles?: Sí. El alcance planteado para el MVP es totalmente asumible dentro del tiempo previsto. La carga de trabajo se distribuye de manera equilibrada y no supera la disponibilidad global, permitiendo absorber los tiempos de aprendizaje.
+- **¿Las horas estimadas caben en las horas disponibles?:** Inicialmente no. Nuestro primer análisis de conocimientos detectó un desfase importante (necesitábamos más de 50 horas de aprendizaje para un límite de unas 40 horas). Sin embargo, tras aplicar límites de tiempo estrictos y repartirnos los temas en lugar de que todos aprendamos todo, hemos logrado ajustar la formación a 36 horas. Con esta estrategia realista, el alcance del MVP sí es asumible y nos deja un pequeño margen de seguridad.
 
-#### Recortes del MVP
-- No es necesario aplicar ningún recorte. La planificación temporal y la capacidad del equipo permiten abordar la totalidad de las funcionalidades definidas para el MVP.
-- Se desarrolla el 100% del alcance comprometido:
-  - Gestión integral de cuadrantes y perfiles de usuarios asistidos (CU-C1, CU-C3).
-  - Circuito de sustituciones y sistema de notificaciones (CU-C4, CU-C5, CU-T2).
-  - Interfaz de trabajo del cuidador con agenda, check-in/out y checklist (CU-T1, CU-T3, CU-T5, CU-T6).
-  - Panel de monitorización en tiempo real para coordinación (CU-C6).
-  - Módulo de resumen diario y seguimiento para familiares (CU-F1).
+#### Recortes y ajustes del MVP
+- Para asegurar que el proyecto se entrega a tiempo y funciona, sí ha sido necesario aplicar recortes técnicos y metodológicos, priorizando el flujo principal sobre los detalles complejos:
+  - **Simplificación de PWA y notificaciones:** Se ha reducido a lo mínimo funcional (instalación básica). Si consume más de las 4 horas asignadas, las notificaciones push se sustituirán por avisos más sencillos en la propia app.
+  - **Límite en mapas y distancias:** La integración de mapas (OpenRouteService) tiene un límite de prueba de 2 horas. Si falla o es muy compleja, se descarta y se utilizará una fórmula matemática básica para estimar la cercanía.
+  - **Base de datos básica:** Se han eliminado del alcance inicial las consultas complejas y estadísticas avanzadas; nos limitaremos a leer, crear, modificar y borrar datos.
+  - **Plantillas de código:** En lugar de que todo el equipo aprenda React y Node desde cero, nos basaremos en copiar y adaptar la estructura inicial que monte el compañero con más experiencia. 
+- Gracias a estos recortes en la complejidad técnica, se asegura el desarrollo del 100% de los flujos críticos (gestión de la baja, fichaje del cuidador en el domicilio y visualización del resumen para el familiar).
     
 ---
 
