@@ -2,6 +2,7 @@
 
 ## Introducción
 
+En este apartado se analiza la viabilidad técnica del proyecto, evaluando las tecnologías necesarias para desarrollar el MVP, las capacidades del equipo, la infraestructura disponible y los principales riesgos técnicos. El objetivo es determinar si es posible implementar las funcionalidades prioritarias dentro del plazo previsto y con los recursos disponibles.
 ---
 
 ## 1. Requisitos funcionales
