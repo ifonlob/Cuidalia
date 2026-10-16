@@ -166,29 +166,40 @@ El cuidador es informado de cambios en medicación, movilidad o citas, con confi
 
 ## 4. Priorización de funcionalidades
 
-### 4.1. Must have
+### Must have (Debe tener)
+Funciones críticas y obligatorias. Sin ellas, los recorridos mínimos del MVP (gestión de la baja, fichaje y resumen del familiar) no se pueden completar.
 
-Funcionalidades imprescindibles para la primera versión del producto:
+- **Autenticación y persistencia de sesión:** El sistema permite el acceso seguro mediante credenciales (JWT), dirigiendo a cada usuario (Coordinador, Cuidador, Familiar) a su interfaz correspondiente y manteniendo la sesión abierta para evitar logins constantes.
+- **Cuadrante y filtrado de turnos:** El coordinador puede visualizar los turnos, buscar por trabajador y filtrar aquellos afectados por una baja para identificar rápidamente qué servicios necesitan un sustituto.
+- **Gestión de sustituciones in-app:** El coordinador puede seleccionar un turno sin cubrir, elegir a un trabajador disponible y asignarle el servicio, permitiendo que el trabajador lo reciba y acepte directamente desde su aplicación móvil.
+- **Fichaje geolocalizado con tolerancia offline:** El cuidador puede registrar su entrada (check-in) y salida (check-out) en el domicilio. El sistema valida la cobertura y, si falla, guarda el registro localmente para sincronizarlo cuando recupere la conexión.
+- **Checklist de tareas interactivas:** El cuidador visualiza un listado de tareas específicas del usuario asignado (medicación, aseo) y las marca como completadas durante el servicio, validando automáticamente la información al terminar.
+- **Resumen diario automatizado:** El sistema genera un reporte a partir del checklist del cuidador y envía una notificación push al familiar indicando que el servicio ha finalizado. El familiar entra a la app y visualiza este resumen para comprobar que todo ha ido bien.
 
-- **Autenticación y roles:** sin permisos diferenciados, la familia vería datos que no debe.
-- **Cuadrante:** crear y editar servicios manualmente.
-- **Perfil del usuario:** dependencia, medicación, horario contratado y contactos de la familia.
-- **Bajas y sustituciones:** aviso a los candidatos y aceptación desde la app.
-- **Notificaciones de cambios:** a familia y cuidadores.
-- **Monitorización de visitas:** quién ha llegado, quién se retrasa y quién no ha aparecido.
-- **Perfil del cuidador.**
-- **Perfil del usuario visible para el cuidador.**
-- **Check-in y check-out.**
-- **Checklist de tareas realizadas.**
+### Should have (Debería tener)
+Funciones que mejoran enormemente la experiencia, pero cuyo desarrollo podría aplazarse si hay riesgos de tiempo, ya que el happy path del MVP puede funcionar sin ellas.
 
-### 4.2. Should have
+- **Gestión y reporte de incidencias:** El cuidador puede registrar desde su app cualquier anomalía ocurrida durante el turno (negativas a medicación, falta de material) y el coordinador puede visualizarla, priorizarla y hacerle seguimiento.
+- **Monitorización de visitas en tiempo real:** El coordinador dispone de un panel de alertas donde ve de forma automática quién ha hecho check-in, quién se retrasa o quién no ha aparecido, sin tener que revisar el cuadrante celda por celda.
+- **Filtros avanzados por perfil y distancia:** Al buscar un sustituto, el coordinador puede filtrar a los cuidadores según las necesidades del paciente (uso de grúa, alergias) y ordenarlos por tiempo de desplazamiento utilizando la API de OpenRouteService (o la fórmula de Haversine).
+- **Alertas inmediatas de gravedad:** El sistema puede enviar notificaciones push destacadas al familiar y al coordinador en caso de que el cuidador reporte un evento grave, como una caída o un mareo.
+- **Notificaciones preventivas de cambios:** Envío de avisos automáticos a las familias cuando se cambia al trabajador titular por un sustituto, mostrando el perfil básico del nuevo cuidador.
 
-Funcionalidades importantes que pueden incorporarse después de las imprescindibles:
+### Could have (Podría tener)
+Funcionalidades deseables, pero que están claramente fuera del alcance del MVP inicial y se abordarán en futuras iteraciones.
 
-- **Incidencias:** el coordinador las gestiona y el cuidador las reporta.
-- **Historial de tareas consultable.**
-- **Alertas inmediatas de eventos graves.**
-- **Solicitudes de la familia:** por ejemplo, adelantar una visita.
+- **Mensajería interna (Chat centralizado):** Familiares, coordinadores y cuidadores pueden comunicarse mediante un chat integrado en la plataforma, eliminando el uso de WhatsApp y centralizando la información.
+- **Solicitudes directas de la familia:** El familiar puede pedir adelantar una visita, cambiar un horario o añadir una tarea puntual (ej. aplicar una crema) a través de un formulario en la app, y ver el estado de aprobación de su solicitud.
+- **Botón de emergencia (SOS):** Un acceso rápido en la app del cuidador que avisa simultáneamente a la familia y a coordinación ante una urgencia, mostrando los teléfonos médicos pertinentes.
+- **Generador de informes para nóminas:** El sistema calcula de manera automatizada las horas mensuales trabajadas y las sustituciones realizadas por cada empleado para exportarlas a gestión laboral.
+
+### Won't have (No tendrá)
+Límites claros del proyecto. Lo que el sistema NO va a hacer en esta versión.
+
+- **Generación automática o inteligente de cuadrantes:** El sistema no utilizará Inteligencia Artificial ni algoritmos complejos para crear los horarios mensuales desde cero, ya que la creación y edición inicial de los servicios seguirá siendo manual por parte del coordinador.
+- **Pasarela de pagos y facturación:** La aplicación no gestionará cobros a las familias mediante tarjeta de crédito ni calculará importes económicos de facturas; se limitará a la gestión de tiempos y tareas.
+- **Integración con sistemas de salud públicos:** La aplicación operará de forma aislada y no se conectará con el historial clínico electrónico de la comunidad autónoma ni con bases de datos de hospitales.
+- **Videollamadas integradas:** Toda la comunicación dentro de la app se realizará mediante texto (resúmenes, notificaciones o chat en un futuro), descartando funcionalidades de streaming de vídeo entre familias y cuidadores.
 
 ---
 
