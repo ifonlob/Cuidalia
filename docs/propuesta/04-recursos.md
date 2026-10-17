@@ -1,22 +1,40 @@
-# Fase 4 · Recursos · <estudio>
+# Fase 4 · Recursos · Cuidalia Studio
 ## Introducción
 ## 1. Las personas
 ### Roles técnicos
-  | Persona | Rol | De qué responde |
+| Persona | Rol | De qué responde |
 ### Responsables por módulo
-  | Módulo | Requisitos (RF) | Responsable | Apoyo |
+| Módulo | Requisitos (RF) | Responsable | Apoyo |
 ### Comunicación     (enlace al contrato)
 ## 2. La tecnología
 
 ### Stack, servicios y APIs
-La arquitectura tecnológica y la justificación de componentes se basan en lo definido en la fase anterior:
-- Consulta en detalle: [Fase 2 · Viabilidad técnica](./02-viabilidad-tecnica.md)
 
-**Resumen del stack y justificación:**
-- **Frontend (React + Vite + Tailwind CSS):** Single Page Application que permite una navegación ágil y reactiva tanto en móvil como en escritorio. Tailwind agiliza el diseño modular y accesible para perfiles de familias y cuidadores.
-- **Backend (Node.js + Express):** Entorno asíncrono y ligero para la construcción de una API REST modular, facilitando la gestión de peticiones concurrentes y la autenticación.
-- **Base de datos (MongoDB + Mongoose):** Modelo documental NoSQL que aporta flexibilidad para modelar esquemas variables (perfiles de usuarios, historiales de asistencia, turnos y valoraciones). Se utiliza el nivel gratuito MongoDB Atlas (512 MB de almacenamiento), suficiente para el volumen de datos de prueba del MVP.
-- **Servicios externos (OpenRouteService API):** Servicio para geocodificación, cálculo de distancias y optimización de rutas entre los domicilios de las familias y los cuidadores. Su plan gratuito ofrece 2.000 peticiones diarias, cubriendo con amplio margen las necesidades de demo y validación.
+La arquitectura del sistema, el desglose de librerías con su justificación técnica y los límites operativos de los servicios gratuitos se encuentran detallados en la fase previa:
+
+- **Enlace permalink a la viabilidad técnica:** [Fase 2 · Viabilidad técnica (Stack, servicios y APIs: L262-L309)](https://github.com/ifonlob/Cuidalia/blob/027d2283a9534456efeb7c926bc77fd4d8b117a8/docs/propuesta/02-viabilidad-tecnica.md#L262-L309)
+
+#### Justificación del stack y corrección de feedback (A0.4)
+Siguiendo las observaciones del feedback recibido, se ha especificado el por qué de cada tecnología y las restricciones de uso gratuito:
+
+- **Frontend:**
+  - `React Router`: Permite estructurar la aplicación como SPA sin recargas de página y gestionar rutas protegidas según el rol de usuario (coordinador, cuidador o familiar).
+  - `Tailwind CSS`: Agiliza la maquetación de una interfaz accesible y reactiva para dispositivos móviles y escritorio sin redundancia de estilos.
+  - `Vite`: Proporciona un entorno de desarrollo ultrarrápido con Hot Module Replacement (HMR) y empaquetado optimizado para despliegue.
+
+- **Backend:**
+  - `Express`: Framework minimalista y flexible sobre Node.js para estructurar la API REST mediante middlewares, modularizando rutas y autenticación.
+  - `JSON Web Tokens (JWT)`: Implementa autenticación stateless segura para validar sesiones mediante tokens en cabeceras HTTP.
+  - `bcrypt`: Cifrado y hashing seguro de contraseñas de usuarios en base de datos.
+  - `CORS`: Configuración explícita de orígenes permitidos para la comunicación segura entre el cliente React y el servidor Express.
+
+- **Base de datos (MongoDB Atlas + Mongoose):**
+  - `Por qué`: Mongoose aporta tipado estricto y validaciones de esquemas en servidor sobre la base de datos documental MongoDB.
+  - `Límites gratuitos`: Nivel **M0 Sandbox** en MongoDB Atlas, que incluye **512 MB de almacenamiento compartido**, suficiente para el volumen de datos de prueba del MVP.
+
+- **Servicios externos (OpenRouteService API):**
+  - `Por qué`: Geocodificación y cálculo de distancias y tiempos de desplazamiento óptimos entre los domicilios de los dependientes y la ubicación de los cuidadores.
+  - `Límites gratuitos`: Plan estándar gratuito con **2.000 peticiones diarias** y un máximo de 40 peticiones por minuto para cálculo de rutas, margen que cubre con amplitud el desarrollo, los tests y la defensa del proyecto.
 
 ### Herramientas de desarrollo
 
