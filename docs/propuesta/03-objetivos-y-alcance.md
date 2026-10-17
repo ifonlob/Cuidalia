@@ -2,8 +2,22 @@
 ## Introducción
 ## 1. Objetivos
 ### Objetivo general
+
+Minimizar el estrés en los cuidados a domicilio, reduciendo el tiempo que coordinadores, cuidadores y familias dedican a gestionar cambios y comunicarse.
+
 ### Objetivos específicos
-  | ID | Objetivo SMART | Qué se mide | Valor de éxito | Cómo se comprueba |
+
+Un coordinador sea capaz de gestionar una baja rápidamente.
+Que un familiar tenga toda la información necesaria sin navegar por la web o app.
+Que un trabajador sepa lo antes posible si tiene que sustituir una baja.
+Que el trabajador pueda marcar una tarea como completada sin afectar de forma significativa a su jornada laboral.
+
+### Medición de los objetivos
+
+Comprobaremos que se puede navegar por la web hasta gestionar la baja realizando menos de 7 clics.
+Utilizaremos a un usuario de prueba que nos diga si es capaz de obtener toda la información que necesita saber sobre el servicio sin salir de la página principal.
+Analizaremos el flujo de usuario desde que entra a la app hasta que marca una tarea como completada y nos aseguraremos de que tarda menos de 15 segundos.
+
 ## 2. Alcance
 
 ### El MVP
