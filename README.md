@@ -6,7 +6,7 @@ Plataforma web para conectar a familias con cuidadores cualificados de personas 
 Las familias se enfrentan a una notable falta de transparencia, lentitud y desconfianza en la búsqueda de personal para la atención de personas dependientes o mayores. Asimismo, carecen de un canal centralizado para coordinar horarios, turnos e incidencias. Por su parte, los cuidadores profesionales no disponen de una herramienta digital unificada que les permita registrar sus asistencias, planificar sus desplazamientos y mantener informadas a las familias en tiempo real. Cuidalia resuelve esta brecha ofreciendo trazabilidad, geolocalización de servicios y comunicación directa.
 
 ## El equipo y sus roles
-- Irene Fontalba: Frontend Lead
+- Irene Foncubierta: Frontend Lead
 - Pablo Reyes: QA y Despliegue
 - Daniel Espinosa: Backend Lead
 - Alejandro Espinosa: Database Manager
