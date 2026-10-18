@@ -1,11 +1,35 @@
 # Fase 4 · Recursos · Cuidalia Studio
+
 ## Introducción
+
+En esta fase se definen los recursos humanos, tecnológicos y organizativos necesarios para llevar a cabo el desarrollo del MVP de **Cuidalia**, estableciendo los roles técnicos de cada integrante, la asignación de responsabilidades por módulo funcional, el stack tecnológico y la metodología de trabajo en equipo.
+
 ## 1. Las personas
+
 ### Roles técnicos
+
 | Persona | Rol | De qué responde |
+| :--- | :--- | :--- |
+| **Daniel Espinosa** | Frontend | Arquitectura del cliente en React, maquetación responsive/PWA con Tailwind CSS, enrutamiento protegido por rol (`React Router`) e integración con la API. |
+| **Irene Foncubierta** | Backend | Arquitectura del servidor en Node.js y Express, lógica de negocio, autenticación JWT, seguridad (middlewares, CORS, bcrypt) e integración con OpenRouteService. |
+| **Pablo Reyes** | Database | Modelado de esquemas y validaciones en Mongoose, administración del clúster en MongoDB Atlas, relaciones entre colecciones y datos de prueba (seed/mocks). |
+| **Alejandro Espinosa** | QA | Aseguramiento de la calidad, diseño y ejecución de pruebas unitarias e integración (Vitest, Jest y Supertest), validación de flujos del MVP y revisión de estándares de código. |
+
 ### Responsables por módulo
+
 | Módulo | Requisitos (RF) | Responsable | Apoyo |
-### Comunicación     (enlace al contrato)
+| :--- | :--- | :--- | :--- |
+| **Módulo 1: Autenticación y Accesos** | Login seguro con credenciales, generación de tokens (JWT), persistencia de la sesión y redirección a la interfaz correspondiente según el rol.<br>• [RF Must Have: Autenticación y sesión (L172)](https://github.com/ifonlob/Cuidalia/blob/d5e0ba8029531bc7946125b204580bf486ab0d74/docs/propuesta/02-viabilidad-tecnica.md#L172)<br>• [Requisitos técnicos: Autenticación y roles (L278-L283)](https://github.com/ifonlob/Cuidalia/blob/d5e0ba8029531bc7946125b204580bf486ab0d74/docs/propuesta/02-viabilidad-tecnica.md#L278-L283) | **Daniel Espinosa** | **Irene Foncubierta** |
+| **Módulo 2: Cuadrante y Sustituciones** | Visualización de turnos, filtrado por baja, pop-up de asignación de sustitutos y lógica de aceptación de turno en la app del trabajador.<br>• [RF Must Have: Cuadrante y sustituciones (L173-L174)](https://github.com/ifonlob/Cuidalia/blob/d5e0ba8029531bc7946125b204580bf486ab0d74/docs/propuesta/02-viabilidad-tecnica.md#L173-L174)<br>• [RF Coordinador: Cuadrante y bajas (L12-L42)](https://github.com/ifonlob/Cuidalia/blob/d5e0ba8029531bc7946125b204580bf486ab0d74/docs/propuesta/02-viabilidad-tecnica.md#L12-L42)<br>• [MVP 5.1: Recorrido Coordinador (L208-L219)](https://github.com/ifonlob/Cuidalia/blob/d5e0ba8029531bc7946125b204580bf486ab0d74/docs/propuesta/02-viabilidad-tecnica.md#L208-L219) | **Irene Foncubierta** | **Alejandro Espinosa** |
+| **Módulo 3: Ejecución del Servicio** | Pantalla de "Mis turnos hoy", sistema de fichaje geolocalizado con tolerancia offline y el checklist de tareas interactivas.<br>• [RF Must Have: Fichaje y checklist (L175-L176)](https://github.com/ifonlob/Cuidalia/blob/d5e0ba8029531bc7946125b204580bf486ab0d74/docs/propuesta/02-viabilidad-tecnica.md#L175-L176)<br>• [RF Cuidador: Llegada, salida y tareas (L141-L148)](https://github.com/ifonlob/Cuidalia/blob/d5e0ba8029531bc7946125b204580bf486ab0d74/docs/propuesta/02-viabilidad-tecnica.md#L141-L148)<br>• [MVP 5.3: Recorrido Cuidador (L230-L239)](https://github.com/ifonlob/Cuidalia/blob/d5e0ba8029531bc7946125b204580bf486ab0d74/docs/propuesta/02-viabilidad-tecnica.md#L230-L239) | **Alejandro Espinosa** | **Pablo Reyes** |
+| **Módulo 4: Resumen y Notificaciones** | Validación automática de tareas, generación del reporte diario, envío de notificación push de finalización y vista del "Resumen del día".<br>• [RF Must Have: Resumen diario automatizado (L177)](https://github.com/ifonlob/Cuidalia/blob/d5e0ba8029531bc7946125b204580bf486ab0d74/docs/propuesta/02-viabilidad-tecnica.md#L177)<br>• [RF Familiar: Resumen diario y alertas (L79-L92)](https://github.com/ifonlob/Cuidalia/blob/d5e0ba8029531bc7946125b204580bf486ab0d74/docs/propuesta/02-viabilidad-tecnica.md#L79-L92)<br>• [MVP 5.2: Recorrido Familiar (L220-L229)](https://github.com/ifonlob/Cuidalia/blob/d5e0ba8029531bc7946125b204580bf486ab0d74/docs/propuesta/02-viabilidad-tecnica.md#L220-L229) | **Pablo Reyes** | **Daniel Espinosa** |
+
+### Comunicación
+
+Las normas de convivencia, toma de decisiones, canales de comunicación (WhatsApp para avisos rápidos, Discord para reuniones de seguimiento y GitHub para revisiones de código y gestión de tareas) quedan recogidas en el contrato del equipo:
+
+- **Enlace al contrato de equipo:** [Contrato de equipo (`docs/CONTRATO.md`)](../CONTRATO.md)
+    
 ## 2. La tecnología
 
 ### Stack, servicios y APIs
