@@ -8,13 +8,13 @@ Las empresas de ayuda a domicilio deben coordinar horarios, disponibilidad de tr
 
 La investigación inicial del equipo incluye reseñas de usuarios que describen dificultades de coordinación, comunicación y sustitución. Estas evidencias ayudan a justificar la necesidad, aunque no permiten concluir que todos los servicios del sector sufran los mismos problemas. La frecuencia y el impacto deberán contrastarse en el futuro con profesionales del SAD.
 
-CUIDALIA plantea reunir la operativa principal en un entorno conectado. La propuesta no consiste únicamente en digitalizar cuadrantes o tareas, sino en **relacionar la información registrada durante una visita con las decisiones que se toman después**. Su hipótesis de diferenciación se desarrolla en cuatro líneas: **CUIDALIA Continuidad**, que organiza la información relevante para el siguiente turno, detección explicable de patrones repetidos, recomendaciones transparentes de compatibilidad entre profesionales y personas atendidas y **CUIDALIA Autonomía**, como evolución centrada en la participación de la persona en las actividades cotidianas. Estas capacidades se plantean como una hoja de ruta y no como funcionalidades exclusivas del mercado ni como parte obligatoria de la primera versión.
+CUIDALIA plantea reunir la operativa principal en un entorno conectado. La propuesta no consiste únicamente en digitalizar cuadrantes o tareas, sino en **relacionar la información registrada durante una visita con las decisiones que se toman después**. Su hipótesis de diferenciación se desarrolla en cuatro líneas: **CUIDALIA Continuidad**, que organiza la información relevante para el siguiente turno; detección explicable de patrones repetidos; recomendaciones transparentes de compatibilidad entre profesionales y personas atendidas; y **CUIDALIA Autonomía**, como evolución centrada en la participación de la persona en las actividades cotidianas. Estas capacidades se plantean como una hoja de ruta y no como funcionalidades exclusivas del mercado ni como parte obligatoria de la primera versión.
 
 Para mantener el proyecto dentro del tiempo disponible para un equipo de cuatro personas que está aprendiendo el stack MERN, el **Producto Mínimo Viable (MVP)** tendrá un alcance deliberadamente reducido. Se centrará en un recorrido completo: la persona coordinadora consulta los turnos, identifica un servicio afectado por una baja, comprueba qué trabajador está disponible, asigna la sustitución y verifica que el profesional la acepta. El trabajador participará únicamente en las acciones necesarias para completar ese recorrido. El fichaje, el registro de tareas y el resumen familiar serán funcionalidades posteriores, salvo que el equipo confirme que puede asumirlas sin poner en riesgo el núcleo del MVP.
 
 El proyecto se desarrollará con **MongoDB, Express, React y Node.js (MERN)**. Se utilizarán datos ficticios durante el desarrollo y las pruebas, acceso diferenciado por roles y un modelo de datos inicial que pueda ampliarse conforme se incorporen nuevas capacidades. Las decisiones automáticas se limitarán a validaciones y reglas comprensibles: la plataforma no emitirá diagnósticos médicos y las recomendaciones futuras no sustituirán el criterio profesional de coordinación.
 
-El equipo está formado por Daniel Espinosa, responsable de frontend, Irene Foncubierta, responsable de backend, Pablo Reyes, responsable de base de datos y Alejandro Espinosa, responsable de calidad y pruebas. El trabajo se organizará mediante GitHub Projects, issues, ramas de tarea y Pull Requests revisados por otra persona. El éxito se evaluará con pruebas cronometradas del recorrido principal, comprobaciones de las restricciones de disponibilidad y pruebas de usabilidad del prototipo de las funcionalidades diferenciales.
+El equipo está formado por Daniel Espinosa, responsable de frontend; Irene Foncubierta, responsable de backend; Pablo Reyes, responsable de base de datos; y Alejandro Espinosa, responsable de calidad y pruebas. El trabajo se organizará mediante GitHub Projects, issues, ramas de tarea y Pull Requests revisados por otra persona. El éxito se evaluará con pruebas cronometradas del recorrido principal, comprobaciones de las restricciones de disponibilidad y pruebas de usabilidad del prototipo de las funcionalidades diferenciales.
 
 ## 1. El problema y las personas destinatarias
 
@@ -42,6 +42,8 @@ La investigación inicial utiliza reseñas públicas como punto de partida:
 - En las opiniones sobre [Cuideo en Trustpilot](https://es.trustpilot.com/review/cuideo.com), junto a valoraciones positivas sobre la atención, aparecen algunas quejas relacionadas con demoras en los procesos, sustituciones tras bajas y respuesta ante incidencias.
 - En las reseñas de [Hemsa en Google Maps](https://www.google.com/maps/place/Hemsa/@36.4628724,-6.1940272,1225m/data=!3m1!1e3), una persona usuaria describe problemas de puntualidad y dificultades de comunicación con la empresa ante una situación delicada.
 
+Estas opiniones son ejemplos cualitativos y no constituyen una muestra representativa de todo el sector. Como siguiente paso de validación, se propone entrevistar al menos a una persona que coordine un servicio SAD y contrastar el proceso actual de sustitución, la frecuencia de las bajas, el tiempo que requiere cubrir una visita y la información que necesita recibir un profesional sustituto.
+
 ### 1.4. Personas usuarias
 
 #### Persona 1. Coordinador o coordinadora
@@ -51,7 +53,7 @@ Es responsable de organizar los servicios, mantener actualizados los turnos, ges
 - **Necesidades:** consultar rápidamente los turnos afectados, identificar trabajadores disponibles, comprobar las condiciones básicas del servicio y registrar la sustitución.
 - **Frustraciones:** llamadas sucesivas, información repartida entre varias herramientas, solapamientos de horarios y dificultad para reconstruir el contexto antes de tomar una decisión.
 - **Objetivos:** reducir el tiempo dedicado a los imprevistos, evitar asignaciones incompatibles y disponer de una visión clara del estado del servicio.
-- **Casos de uso:** consultar y filtrar turnos, localizar un servicio afectado por una baja, comprobar la disponibilidad de candidatos, asignar un sustituto verificar la aceptación y, en futuras versiones, consultar contexto de visitas anteriores y avisos sobre patrones repetidos.
+- **Casos de uso:** consultar y filtrar turnos; localizar un servicio afectado por una baja; comprobar la disponibilidad de candidatos; asignar un sustituto; verificar la aceptación; y, en futuras versiones, consultar contexto de visitas anteriores y avisos sobre patrones repetidos.
 
 #### Persona 2. Profesional de atención directa
 
@@ -60,7 +62,7 @@ Realiza servicios en distintos domicilios y necesita información precisa para c
 - **Necesidades:** consultar la agenda, conocer las indicaciones operativas pertinentes, aceptar cambios de turno y, en futuras iteraciones, registrar entradas, salidas, tareas e incidencias.
 - **Frustraciones:** recibir cambios tarde, depender de mensajes dispersos y llegar a una visita sin conocer las rutinas relevantes.
 - **Objetivos:** entender qué servicio debe realizar, disponer de los datos necesarios y dedicar el menor tiempo posible a tareas administrativas.
-- **Casos de uso:** consultar una sustitución pendiente, aceptarla y verificar que el cambio ha quedado registrado y posteriormente, consultar el servicio, fichar y completar el registro de tareas.
+- **Casos de uso:** consultar una sustitución pendiente, aceptarla y verificar que el cambio ha quedado registrado; posteriormente, consultar el servicio, fichar y completar el registro de tareas.
 
 #### Persona 3. Familiar autorizado
 
