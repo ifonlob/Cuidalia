@@ -2,127 +2,98 @@
 
 ## Introducción
 
-**Cuidalia** es una plataforma web y móvil creada para acabar con el descontrol en la gestión de la ayuda a domicilio. A día de hoy, las empresas del sector funcionan a base de parches: usan Excel para los turnos, cruzan llamadas a contrarreloj para cubrir una baja y los auxiliares apuntan las tareas en papel. Esto se traduce en coordinadores saturados , cuidadores con rutas mal planificadas y familias que no tienen ni idea de qué está pasando en la casa de sus mayores. 
+**Cuidalia** es una plataforma web y móvil orientada a mejorar la coordinación de los servicios de ayuda a domicilio (SAD). Actualmente, las empresas del sector pueden recurrir a herramientas diferentes para gestionar los turnos, coordinar sustituciones, registrar tareas y comunicarse con las familias. Cuando la información está dispersa entre hojas de cálculo, llamadas, mensajes y documentos en papel, la gestión diaria puede volverse más lenta y aumentar el riesgo de errores.
 
-Nuestra aplicación conecta a estas tres partes en un solo lugar. Más allá de quitar el papel, automatiza el trabajo duro del día a día. Si alguien se da de baja, el sistema cruza datos de ubicación y disponibilidad para proponer al sustituto ideal al momento. Para el trabajador, incluye una app sencilla pensada para fichar y reportar su ruta sin errores técnicos. Y para la familia, abre un portal donde pueden ver en directo las tareas hechas y la medicación administrada, evitando que tengan que llamar a la oficina cada dos por tres para quedarse tranquilos.
+Cuidalia busca reunir a coordinación, trabajadores y familiares en un mismo entorno. La propuesta incluye facilitar la gestión de cuadrantes y sustituciones, ofrecer a los profesionales una aplicación móvil para consultar sus servicios y registrar tareas, y habilitar un espacio para que las familias autorizadas puedan consultar la información disponible sobre la atención recibida. En caso de una baja, el sistema pretende ayudar a coordinación a localizar posibles sustitutos según criterios como disponibilidad, ubicación y adecuación a las necesidades de la persona atendida. Estas funcionalidades son la propuesta del proyecto y deberán ajustarse al alcance final del MVP.
 
-## 1. Identificación de la necesidad
+## 1. La necesidad
 
-### El Problema
+### El problema
 
-**Coordinación ineficiente:** los coordinadores dependen de Excel, llamadas, WhatsApp, papel u otras herramientas desconectadas para gestionar cuadrantes, bajas y sustituciones.
+- **Coordinación ineficiente:** los coordinadores pueden depender de Excel, llamadas, WhatsApp, papel u otras herramientas desconectadas para gestionar cuadrantes, bajas y sustituciones.
+- **Falta de información centralizada:** la información sobre usuarios, trabajadores, horarios, tareas e incidencias puede encontrarse dispersa en varios canales.
+- **Problemas de comunicación:** la información entre coordinación, trabajadores y familiares puede perderse, llegar tarde o transmitirse de manera incorrecta.
+- **Gestión complicada de imprevistos:** una baja o una urgencia puede obligar a realizar varias llamadas y modificaciones manuales antes de encontrar una solución.
+- **Desplazamientos poco eficientes:** una planificación que no tenga en cuenta la ubicación y los horarios puede generar rutas poco optimizadas y tiempos de desplazamiento innecesarios.
 
-**Falta de información:** la información sobre usuarios, trabajadores, horarios, tareas e incidencias se encuentra dispersa.
+### Quién lo sufre
 
-**Problemas de comunicación:** la información entre coordinador, trabajador y familia puede perderse, llegar tarde o transmitirse de manera incorrecta.
+El problema afecta a las distintas personas que intervienen en el servicio:
 
-**Gestión complicada de imprevistos:** una baja o una urgencia obliga a realizar múltiples llamadas y modificaciones manuales para encontrar una solución. 
+- **Empresa y coordinación:** gestionan cuadrantes, cambios de horario, bajas, sustituciones, incidencias, comunicación con trabajadores y familiares y seguimiento de los servicios. El uso de herramientas fragmentadas puede aumentar la carga administrativa y el riesgo de errores.
+- **Trabajadores:** necesitan consultar sus servicios y horarios, registrar entradas y salidas, comunicar incidencias y dejar constancia de las tareas realizadas. Los cambios de última hora pueden generar incertidumbre y pérdida de tiempo.
+- **Familiares:** pueden tener dificultades para conocer el estado del servicio, las tareas realizadas, las incidencias o los cambios de cuidador. Cuando necesitan información o realizar una petición, pueden acabar contactando con la empresa por teléfono.
+- **Personas atendidas:** reciben directamente las consecuencias de los problemas de coordinación, por ejemplo, si se produce un retraso, un cambio de profesional o una falta de transmisión de información relevante.
 
-**Desplazamientos ineficientes:** la planificación de los servicios puede generar rutas poco optimizadas y tiempos de desplazamiento innecesarios.
+### Frecuencia e impacto
 
-### ¿A quién afecta y con qué frecuencia?
+La coordinación de cuadrantes, horarios, servicios e incidencias forma parte del trabajo habitual de una empresa de ayuda a domicilio. Sin embargo, **no se dispone todavía de datos cuantitativos que permitan afirmar con qué frecuencia se producen las bajas imprevistas, cuánto se tarda en cubrirlas o cuántos errores de comunicación se generan**. Por tanto, la frecuencia exacta debe validarse con profesionales del sector y no se presenta aquí como una estadística demostrada.
 
-Esto afecta a todas las personas involucradas en el proceso, tanto a la empresa como a los trabajadores y clientes.
+El impacto potencial varía según el perfil:
 
-**La empresa:** Gestionan continuamente cuadrantes, cambios de horarios, bajas, sustituciones, incidencias, comunicación con trabajadores y familiares y seguimiento de los servicios. La utilización de herramientas fragmentadas aumenta la carga administrativa y el riesgo de errores.
+- **En la empresa:** una baja, un cambio de horario o una incidencia puede desencadenar varias llamadas y modificaciones manuales, lo que resta tiempo a otras tareas de coordinación.
+- **En los trabajadores:** una comunicación tardía sobre un cambio de turno, las dificultades para registrar un servicio o la falta de un canal estructurado para comunicar incidencias pueden complicar la jornada laboral.
+- **En familiares y personas atendidas:** la falta de información accesible puede generar incertidumbre sobre si el servicio se ha realizado, qué tareas se han completado o si ha ocurrido una incidencia. Esto es relevante porque el servicio está relacionado directamente con el cuidado y bienestar de una persona dependiente.
 
-**Trabajadores:** Necesitan consultar sus servicios y horarios, registrar entradas y salidas, comunicar incidencias y dejar constancia de las tareas realizadas. Los cambios de última hora pueden generar incertidumbre y pérdida de tiempo.
-
-**Familiares y dependientes:** Pueden tener dificultades para conocer el estado del servicio, las tareas realizadas, incidencias o cambios de cuidador. Cuando necesitan información o realizar una petición, frecuentemente deben contactar con la empresa.
-
-
-### Impacto
-
-**En la empresa:** Es probablemente donde el problema tiene un impacto operativo más directo. Los coordinadores tienen que gestionar simultáneamente múltiples servicios, trabajadores y usuarios. Una baja, un cambio de horario o una incidencia puede desencadenar varias llamadas y modificaciones manuales.
-
-**En los trabajadores:** Los cuidadores son quienes ejecutan el servicio y necesitan disponer de información actualizada. Una comunicación tardía de un cambio de turno, dificultades para registrar el servicio o la ausencia de un canal estructurado para comunicar incidencias pueden afectar directamente a su jornada laboral. 
-
-**En familiares y dependientes:** El impacto se manifiesta principalmente en forma de falta de visibilidad e incertidumbre. El familiar puede no saber si el servicio se ha realizado, qué tareas se han llevado a cabo o si ha ocurrido alguna incidencia sin tener que contactar con la empresa.
-
-Esto es especialmente relevante porque el servicio afecta directamente al bienestar y cuidado de una persona dependiente, por lo que disponer de información clara y accesible tiene un valor importante para el familiar.
-
+Para validar la frecuencia y el impacto, se propone recoger en entrevistas con profesionales datos como el número habitual de sustituciones, el tiempo medio necesario para gestionarlas, los canales utilizados y los problemas de comunicación más comunes.
 
 ### Evidencias
 
-En la empresa [Cuideo](https://es.trustpilot.com/review/cuideo.com) se observa una valoración generalmente muy positiva de la empresa. Los usuarios destacan especialmente la amabilidad, cercanía y rapidez del personal, así como su capacidad para atender las necesidades particulares de cada caso y proporcionar presupuestos de manera ágil. También se valora positivamente la atención ofrecida por los diferentes profesionales, quienes proporcionan asesoramiento personalizado, explican las distintas alternativas con claridad y resuelven las dudas de forma profesional.
-No obstante, algunas opiniones reflejan determinados aspectos susceptibles de mejora. Entre ellos, se señalan los largos tiempos asociados al proceso de selección y las dificultades para gestionar sustituciones cuando se producen bajas de cuidadoras. Asimismo, algunos clientes indican que determinadas incidencias imprevistas no siempre reciben una respuesta con la rapidez esperada, especialmente cuando requieren contactar con el servicio de atención telefónica.
+Como evidencia inicial se han revisado opiniones públicas de personas usuarias de servicios de ayuda a domicilio. Estas opiniones ayudan a identificar posibles problemas, pero son experiencias individuales y **no permiten estimar por sí solas la frecuencia del problema en todo el sector**.
 
-En la empresa [Hemsa](https://www.google.com/maps/place/Hemsa/@36.4628724,-6.1940272,1225m/data=!3m1!1e3!4m8!3m7!1s0xd0dccd88c4595e7:0x3c0cf84d3203b874!8m2!3d36.4628724!4d-6.1940272!9m1!1b1!16s%2Fg%2F11xcm23w40?entry=ttu&g_ep=EgoyMDI2MDkzMC4wIKXMDSoASAFQAw%3D%3D) una clienta denuncia graves problemas de coordinación y comunicación en el servicio de ayuda a domicilio. En concreto, el cuidador llegó tarde a recoger a su hermano, una persona totalmente dependiente, y lo dejó esperando en un lugar desconocido. Además, la familia tuvo dificultades para contactar con la empresa pese a realizar numerosas llamadas y considera que la coordinadora mostró falta de empatía y una respuesta inadecuada ante una situación de urgencia.
+- **Cuideo  Trustpilot:** en las opiniones públicas hay valoraciones positivas sobre la atención, la amabilidad y la claridad de la información. También aparece una reseña fechada el 17 de julio de 2026 en la que una persona describe dificultades durante el proceso de selección y afirma que no recibió aviso cuando una cuidadora causó baja ni contó con una sustituta en ese momento. Esta opinión es un ejemplo relacionado con la continuidad del servicio, no una prueba de que ocurra en todos los casos. [Consultar las opiniones de Cuideo en Trustpilot](https://es.trustpilot.com/review/cuideo.com?page=3).
+- **HEMSA  Google Maps:** en las opiniones públicas del establecimiento consultadas por el equipo se identificó un comentario que describe problemas de puntualidad y dificultades para contactar con la empresa ante una incidencia relacionada con el servicio. El enlace disponible conduce al perfil y sus opiniones [Consultar HEMSA en Google Maps](https://www.google.com/maps/place/Hemsa/@36.4628724,-6.1940272,1225m/data=!3m1!1e3!4m8!3m7!1s0xd0dccd88c4595e7:0x3c0cf84d3203b874!8m2!3d36.4628724!4d-6.1940272!9m1!1b1!16s%2Fg%2F11xcm23w40?entry=ttu&g_ep=EgoyMDI2MDkzMC4wIKXMDSoASAFQAw%3D%3D).
 
-## 2. Definición de usuarios objetivo
+Estas evidencias se utilizarán como punto de partida para formular preguntas de investigación y deberán complementarse, si es posible, con entrevistas a coordinadores, trabajadores y familiares.
 
-### User Persona 1: El Coordinador
-Es el profesional encargado de la organización de la plantilla y asignación de servicios dentro de la empresa de ayuda a domicilio. Maneja un volumen alto de empleados y clientes simultáneos, y actualmente depende de herramientas genéricas y procesos manuales para la organización diaria.
+## 2. Los usuarios
 
-**Necesidades:** Automatizar la creación y actualización de cuadrantes, localizar rápidamente perfiles idóneos para sustituciones de última hora y optimizar el flujo de trabajo de toda la plantilla.
+Los siguientes perfiles son **personas ficticias representativas** creadas para describir los principales roles de la aplicación. No corresponden a entrevistas reales ni deben interpretarse como resultados de una investigación ya realizada.
 
-**Frustraciones:** Consumo excesivo de tiempo resolviendo incidencias, alta dependencia de llamadas telefónicas para gestionar bajas o cambios de turno, y dificultad para cuadrar horarios, vacaciones y desplazamientos sin generar problemas de solapación de horarios.
+### Lucía, coordinadora de servicios
 
-**Objetivos:** Centralizar la gestión, obtener una visión global y en tiempo real del estado de los servicios, y minimizar el margen de error humano en la asignación de personal.
+- **Quién es:** profesional encargada de organizar la plantilla y asignar los servicios dentro de una empresa de ayuda a domicilio. Gestiona varios trabajadores y usuarios a la vez y puede depender de herramientas y procesos manuales para organizar la jornada.
+- **Necesidades:** crear y actualizar cuadrantes, localizar con rapidez posibles sustitutos para una baja y tener una visión general del estado de los servicios.
+- **Frustraciones:** dedicar demasiado tiempo a resolver incidencias, depender de llamadas para gestionar bajas o cambios de turno y tener dificultades para cuadrar horarios, vacaciones y desplazamientos sin solapamientos.
+- **Objetivos:** centralizar la gestión, consultar el estado de los servicios y reducir los errores en la asignación de personal.
+- **Casos de uso:** crear y modificar cuadrantes, registrar una baja, consultar qué trabajadores están disponibles, revisar sugerencias de sustitución según disponibilidad, ubicación y adecuación al servicio y confirmar la asignación elegida.
 
-**Casos de uso principales:** 
+### Carmen, familiar de una persona atendida
 
-  * Crear, modificar y supervisar cuadrantes de trabajo de forma dinámica.
-  * Poder usar un algoritmo de compatibilidad para emparejar al trabajador más adecuado con las necesidades de cada usuario.
-  * Calcular y optimizar las rutas de desplazamiento de los empleados.
+- **Quién es:** familiar que participa en el seguimiento de los cuidados de una persona dependiente y compagina esa responsabilidad con su vida personal y laboral.
+- **Necesidades:** consultar la información disponible sobre la atención prestada, conocer las tareas registradas y disponer de un canal de comunicación para plantear peticiones.
+- **Frustraciones:** no saber si el servicio se ha realizado o si ha ocurrido una incidencia y tener que contactar con la empresa para resolver consultas habituales.
+- **Objetivos:** disponer de información clara y accesible sobre el servicio de su familiar y comunicarse con la empresa de forma más sencilla.
+- **Casos de uso:** consultar el registro de las tareas realizadas y la información de medicación que haya sido registrada por el profesional y enviar una petición o nota relacionada con el servicio.
 
-### User Persona 2: El Familiar del Usuario
-Es la persona responsable del usuario, la cual compagina su vida personal y obligaciones laborales con la supervisión de los cuidados de su familiar.
+### Javier, trabajador de ayuda a domicilio
 
-**Necesidades:** Obtener visibilidad y constancia en tiempo real sobre la atención prestada, confirmar la correcta administración de tratamientos y disponer de un canal de comunicación directo y eficiente.
+- **Quién es:** profesional que realiza visitas a distintos domicilios a lo largo de su jornada y necesita consultar la planificación de sus servicios.
+- **Necesidades:** acceder a sus turnos y direcciones, registrar el inicio y el fin del servicio, consultar las tareas previstas y comunicar incidencias.
+- **Frustraciones:** recibir tarde los cambios de turno, perder tiempo rellenando partes en papel o no disponer de un canal claro para dejar constancia de una incidencia.
+- **Objetivos:** consultar la información de su jornada de manera sencilla y dedicar el máximo tiempo posible a la atención directa.
+- **Casos de uso:** consultar su agenda diaria, registrar la entrada y la salida según las capacidades que finalmente se implementen, marcar las tareas como realizadas y comunicar incidencias a coordinación. La validación mediante geolocalización se considera una funcionalidad propuesta y deberá confirmarse dentro del alcance y los requisitos del proyecto.
 
-**Frustraciones:** Incertidumbre sobre el estado diario de su familiar, malentendidos en la transmisión de pautas médicas o alimenticias, y la ineficiencia de tener que pasar siempre a través de la centralita administrativa para consultas básicas o cambios menores.
+## 3. La competencia
 
-**Objetivos:** Lograr total tranquilidad mental, asegurando un seguimiento exhaustivo y una comunicación fluida sin intermediarios innecesarios.
+La siguiente comparativa es preliminar y recoge el análisis inicial del equipo. Las afirmaciones relativas a experiencia de uso, incidencias técnicas, precio o adaptación normativa deben contrastarse con documentación, demostraciones o reseñas concretas antes de presentarlas como conclusiones definitivas.
 
-**Casos de uso principales:** 
-
-  * Consultar el registro actualizado de tareas realizadas y medicación suministrada en cada visita a su familiar.
-  * Añadir peticiones específicas, recordatorios o notas en tiempo real para el cuidador asignado en el turno correspondiente.
-
-### User Persona 3: El Trabajador
-Es el profesional que realiza múltiples visitas a diferentes domicilios a lo largo de su jornada laboral, enfrentándose a un entorno de trabajo dinámico y a menudo impredecible.
-
-**Necesidades:** Disponer de un registro claro y accesible de sus rutas y tareas por domicilio, simplificar el control de su jornada laboral y contar con un chat para reportar cualquier incidencia.
-
-**Frustraciones:** Recepción tardía de notificaciones sobre cambios imprevistos en sus turnos o usuarios, pérdida de tiempo rellenando partes de trabajo en papel, y dificultades para dejar constancia formal de incidencias o urgencias médicas de forma ágil.
-
-**Objetivos:** Centrar su esfuerzo y atención exclusivamente en el cuidado del usuario, delegando toda la carga administrativa y de cuadrantes a la aplicación móvil.
-
-**Casos de uso principales:** 
-
-  * Registrar el fichaje de entrada y salida mediante validación geolocalizada.
-  * Visualizar su ruta diaria y marcar las tareas como completadas en cada domicilio.
-  * Notificar urgencias, incidencias o alertas directamente a la coordinación y a los familiares.
-
-## 3. Análisis de competencia
-
-### Competidor 1: Gesad
-* **Fortalezas:** Es el estándar en España para licitaciones públicas y grandes concesionarias. Resuelve bien la parte legal, convenios del sector y facturación con la administración.
-* **Debilidades:** La interfaz esta anticuada y  es poco intuitiva. En las tiendas de apps, las auxiliares reportan fallos constantes al registrar el fichaje por GPS, pérdidas de datos sin cobertura y una desconexión con las familias que no tienen acceso a la plataforma.
-
-### Competidor 2: ResiPlus SAD
-* **Fortalezas:** Buen control del expediente clínico y sanitario del usuario, respaldado por un soporte técnico asentado en el sector asistencial español.
-* **Debilidades:** La gestión de cuadrantes es muy rígida y reorganizar turnos por bajas imprevistas requiere procesos manuales lentos. Es un software de escritorio adaptado a la web con mal rendimiento, y su zona de familias es un simple buzón de documentos sin seguimiento en tiempo real.
-
-### Competidor 3: Birdie
-* **Fortalezas:** Interfaz limpia y moderna. La aplicación móvil es ágil y facilita que el cuidador registre tareas e incidencias durante la visita sin complicaciones.
-* **Debilidades:** Está orientada al mercado ingles, por lo que no contempla la normativa laboral ni los convenios del SAD en España. Además, el precio por usuario es elevado para pymes y la sincronización se congela con mala cobertura.
+| Solución | Qué hace bien | Qué hace mal o qué limitaciones se deben comprobar |
+|---|---|---|
+| **GESAD** | Es una solución del sector SAD orientada a apoyar la gestión de servicios y tareas administrativas, incluida la gestión relacionada con entidades y administraciones. | En el análisis inicial del equipo se han señalado posibles dificultades de usabilidad y quejas sobre el fichaje mediante GPS, el uso con poca cobertura y la comunicación con las familias. Estos puntos deben respaldarse con reseñas concretas o pruebas de la aplicación. |
+| **GESAD Mobile** ([información oficial](https://play.google.com/store/apps/details?id=gt.grupotrevenque.gesadmobile)) | Permite a trabajadores y coordinadores consultar agendas desde dispositivos móviles. Incluye fichaje de entrada y salida, seguimiento de las tareas realizadas, mensajería con el sistema central y encuestas de calidad. | Se debe comprobar mediante pruebas de uso la facilidad de navegación, el comportamiento en situaciones de cobertura limitada y la agilidad para gestionar cambios imprevistos. No se atribuyen carencias concretas sin evidencias verificables. |
+| **ResiPlus SAD** | Según la revisión inicial del equipo, ofrece funciones para gestionar información de las personas atendidas y apoyar procesos del ámbito asistencial. | El equipo considera necesario comprobar si la modificación de cuadrantes y la reasignación ante bajas imprevistas pueden realizarse con suficiente agilidad, así como el alcance de las funciones disponibles para las familias. No se presentan esas limitaciones como verificadas. |
+| **Birdie** | Cuenta con una interfaz orientada al uso digital y herramientas para que el personal registre información de sus visitas y tareas. | Antes de concluir que tiene limitaciones para el mercado español, deben verificarse su cobertura de los requisitos laborales y operativos del SAD en España, sus condiciones de precio para pequeñas empresas y su comportamiento con una conexión débil. |
+| **ecoSoftWEB** ([información oficial](https://ecosoftconsulting.net/programas-para-empresas-de-ayuda-a-domicilio/)) | Es un ERP web especializado en ayuda a domicilio. Ofrece planificación de servicios, agendas de trabajadores, control horario mediante GPS, gestión de tareas y reasignación de servicios teniendo en cuenta factores como la disponibilidad, las ausencias, las necesidades de los usuarios y los desplazamientos. También permite generar informes para las familias o clientes. | Es necesario investigar mediante una demostración qué información pueden consultar las familias, cómo se comunica el contexto de una visita al siguiente profesional y qué grado de explicación ofrecen las recomendaciones de reasignación. No debe afirmarse que carece de estas funciones sin haberlo comprobado. |
 
 ### Oportunidades
-* **Centralizar la operativa:** Unir en un mismo flujo a coordinación, auxiliares y familiares para no depender de llamadas telefónicas ni parches por WhatsApp.
-* **Reasignación rápida de bajas:** Sugerir sustitutos de forma automática cruzando cercanía física, disponibilidad horaria y perfil adecuado para el dependiente.
-* **Muro informativo para la familia:** Mostrar en directo la llegada del auxiliar, tareas completadas y medicación administrada para reducir llamadas de consulta a la centralita.
-* **App de campo funcional:** Diseñar una vista móvil ligera donde fichar y marcar tareas tome dos toques, pensada para trabajadores con poca destreza tecnológica.
 
-### Punto de control
-Se decide **continuar con la idea candidata**. El software actual en España está enfocado en la facturación y la burocracia, dejando tirada la coordinación diaria y la tranquilidad familiar. Existe un hueco claro para una solución ágil, accesible y construida con una arquitectura web moderna.
+- **Centralizar la operativa:** integrar en un mismo flujo a coordinación, auxiliares y familiares para reducir la dependencia de canales desconectados.
+- **Facilitar las sustituciones:** estudiar cómo hacer más sencilla la revisión de candidatos y presentar claramente los motivos por los que un trabajador es adecuado para cubrir un servicio.
+- **Favorecer la continuidad de la atención:** facilitar que la información relevante de cada visita esté organizada y disponible para los profesionales autorizados.
+- **Mejorar la comunicación con las familias:** ofrecer información clara y accesible sobre los servicios realizados, las tareas registradas y las incidencias comunicadas.
+- **Diseñar una experiencia móvil sencilla:** priorizar una interfaz accesible que facilite a los trabajadores consultar sus servicios y registrar las tareas con pocos pasos.
 
+## 4. Propuesta de valor
 
-## 4. Propuesta de Valor Única
-
-A **las empresas de ayuda a domicilio y las familias de los usuarios** le pasa **que el día a día es un caos organizativo. La oficina pierde horas cuadrando turnos a mano o cubriendo bajas urgentes por teléfono, y los familiares sufren la angustia de no saber a qué hora llegó el cuidador o si le dio la medicación al abuelo.** 
-
-Hoy usa **software anticuado mezclado con hojas de Excel, papel y grupos de WhatsApp**, que falla en **que nada está conectado en tiempo real. Si hay una urgencia, los programas no ayudan a buscar sustitutos, las apps para que el trabajador fiche fallan si hay mala cobertura, y las familias están totalmente aisladas del proceso a no ser que llamen a la centralita.** 
-
-Nosotros le damos **una plataforma  que automatiza las sustituciones sugiriendo al cuidador más cercano y compatible, da a los trabajadores una app donde fichar y marcar tareas en dos toques, y abre un muro en directo para que las familias vean cómo está su familiar sin tener que contactar con la empresa.**
+> A las empresas de ayuda a domicilio especialmente a las personas coordinadoras les resulta difícil gestionar cuadrantes, cubrir bajas y mantener la información del servicio actualizada para trabajadores y familias. Hoy pueden utilizar programas de gestión junto con hojas de cálculo, llamadas, WhatsApp y papel, pero cuando la información queda repartida entre varios canales, la coordinación puede requerir trabajo manual y la comunicación puede llegar tarde. Cuidalia propone una plataforma que centraliza la gestión, ayuda a coordinación a localizar sustitutos teniendo en cuenta su disponibilidad y adecuación al servicio, ofrece a los trabajadores una aplicación para consultar su agenda y registrar tareas, y permite a las familias autorizadas consultar la información que se haya registrado sobre la atención recibida.
